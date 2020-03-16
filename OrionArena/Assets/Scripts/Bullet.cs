@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
                 Instantiate(hitPlayerEffect, transform.position, transform.rotation);
                 collision.collider.GetComponent<Health>().TakeDamage(damage);
 
-                Debug.Log("Red" + collision.collider.gameObject.GetComponent<Health>().HealthPoints);
+                //Debug.Log("Red" + collision.collider.gameObject.GetComponent<Health>().HealthPoints);
 
                 Destroy(gameObject);
             }
@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
                 Instantiate(hitPlayerEffect, transform.position, transform.rotation);
                 collision.collider.GetComponent<Health>().TakeDamage(damage);
 
-                Debug.Log("Blue" + collision.collider.gameObject.GetComponent<Health>().HealthPoints);
+                //Debug.Log("Blue" + collision.collider.gameObject.GetComponent<Health>().HealthPoints);
               
             }
             Destroy(gameObject);
@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour
                 Instantiate(hitPlayerEffect, transform.position, transform.rotation);
                 collision.collider.GetComponent<Health>().TakeDamage(damage);
 
-                Debug.Log("Bullet" + collision.collider.gameObject.GetComponent<Health>().HealthPoints);
+                //Debug.Log("Bullet" + collision.collider.gameObject.GetComponent<Health>().HealthPoints);
 
                 Destroy(gameObject);
             }

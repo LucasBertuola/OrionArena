@@ -1,12 +1,24 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Flip : MonoBehaviour
 {
+    [SerializeField] PhotonView pv;
+    public GameObject player;
+
+    private void Start()
+    {
+        pv = player.GetComponent<PhotonView>();
+    }
+
     void Update()
     {
-        FlipBody();
+        if (pv.IsMine)
+        {
+            FlipBody();
+        }
     }
 
     public void FlipBody()

@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Shooting : MonoBehaviour
 {
+    [SerializeField] PhotonView pv;
+
     public Transform firePoint;
     public GameObject bulletPrefab;
 
     public float bulletForce = 20f;
+
+    private void Start()
+    {
+        pv = GetComponent<PhotonView>();
+    }
 
     void Update()
     {

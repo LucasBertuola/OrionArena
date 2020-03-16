@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LookAt : MonoBehaviour
 {
+    [SerializeField] PhotonView pv;
+
     public GameObject player;
     private PlayerController playerController;
 
@@ -12,11 +15,15 @@ public class LookAt : MonoBehaviour
     void Start()
     {
         playerController = player.GetComponent<PlayerController>();
+        pv = player.GetComponent<PhotonView>();
     }
 
     void Update()
     {
-        Aiming();
+        if (pv.IsMine)
+        {
+            Aiming();
+        }
     }
 
     private void Aiming()
