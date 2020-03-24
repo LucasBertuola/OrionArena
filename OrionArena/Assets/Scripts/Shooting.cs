@@ -19,12 +19,16 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (pv.IsMine)
         {
-            Shoot();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                pv.RPC("Shoot", RpcTarget.AllBuffered);
+            }
         }
     }
 
+    [PunRPC]
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

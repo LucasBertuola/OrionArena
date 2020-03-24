@@ -18,7 +18,7 @@ public class Flip : MonoBehaviour
         if (pv.IsMine)
         {
             FlipBody();
-        }
+        }    
     }
 
     public void FlipBody()

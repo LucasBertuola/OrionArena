@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] PhotonView pv;
+    [SerializeField] private Text playerName;
 
     public float speed;
     public float jumpForce;
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         pv = GetComponent<PhotonView>();
+        playerName.text = pv.Owner.NickName;
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -41,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
             moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+            playerName.color = Color.green;
+            playerName.fontStyle = FontStyle.Bold;
         }
 
 

@@ -8,13 +8,11 @@ public class LookAt : MonoBehaviour
     [SerializeField] PhotonView pv;
 
     public GameObject player;
-    private PlayerController playerController;
 
     public float offset;
 
     void Start()
     {
-        playerController = player.GetComponent<PlayerController>();
         pv = player.GetComponent<PhotonView>();
     }
 
