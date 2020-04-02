@@ -37,5 +37,11 @@ MonoBehaviour:
   - Aiming
   - FlipBody
   - Shoot
+  - DestroyBullet
+  - Update
+  - TakeDamage
+  - Die
+  - SpawnEffect
+  - Revive
   DisableAutoOpenWizard: 1
   ShowSettings: 1

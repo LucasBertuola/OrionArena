@@ -10,7 +10,11 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
 
-    public float bulletForce = 20f;
+    public float spread = 0;
+    public float fireRate = 1f;
+    public float fireCD = 0f;
+
+    //public float bulletForce = 20f;
 
     private void Start()
     {
@@ -21,9 +25,16 @@ public class Shooting : MonoBehaviour
     {
         if (pv.IsMine)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (fireCD > 0)
+            {
+                fireCD -= Time.deltaTime;
+            }
+
+            if (Input.GetButton("Fire1") && fireCD <= 0)
             {
                 pv.RPC("Shoot", RpcTarget.AllBuffered);
+                //Shoot();
+                fireCD = fireRate;
             }
         }
     }
@@ -32,7 +43,8 @@ public class Shooting : MonoBehaviour
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+        //bullet.transform.Rotate(0, 0, Random.Range(-spread, spread));
+        //Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        //rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8375895043349672411}
   - component: {fileID: 2395900279702385631}
   m_Layer: 0
-  m_Name: HitGroundEffect 1
+  m_Name: HitPlayerEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3612,7 +3612,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 1
