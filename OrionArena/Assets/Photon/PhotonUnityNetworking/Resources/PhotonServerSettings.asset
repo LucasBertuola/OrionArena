@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 55fc6a5b-ce9d-4a64-88ba-e9baef49c3e1
+    AppIdRealtime: 
     AppIdChat: 
     AppIdVoice: 
-    AppVersion: 1
+    AppVersion: 
     UseNameServer: 1
     FixedRegion: 
     Server: 
@@ -32,17 +32,11 @@ MonoBehaviour:
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
+  - Die
   - Fire
   - RespawnSpaceship
-  - Aiming
-  - FlipBody
-  - Shoot
-  - DestroyBullet
-  - Update
-  - TakeDamage
-  - Die
-  - SpawnEffect
   - Revive
+  - Shoot
   - UpdateHealth
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  ShowSettings: 0
