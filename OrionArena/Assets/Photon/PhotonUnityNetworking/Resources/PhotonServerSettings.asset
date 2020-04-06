@@ -43,5 +43,6 @@ MonoBehaviour:
   - Die
   - SpawnEffect
   - Revive
+  - UpdateHealth
   DisableAutoOpenWizard: 1
   ShowSettings: 1

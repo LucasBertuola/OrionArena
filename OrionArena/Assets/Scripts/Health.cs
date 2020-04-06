@@ -15,22 +15,23 @@ public class Health : MonoBehaviourPun
     public SpriteRenderer sr;
     public BoxCollider2D boxCollider;
     public GameObject playerCanvas;
+    public Shooting shooting;
 
     public PlayerController playerController;
 
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        shooting = GetComponent<Shooting>();
         healthPoints = healthMax;
         healthSlider.maxValue = healthMax;
-        healthSlider.value = healthPoints;
+        photonView.RPC("UpdateHealth", RpcTarget.AllBuffered);
     }
 
     public void TakeDamage(float value)
     {
         healthPoints -= value;
-        healthSlider.value = healthPoints;
-
+        photonView.RPC("UpdateHealth", RpcTarget.AllBuffered);
 
         if (photonView.IsMine && healthPoints <= 0)
         {
@@ -38,7 +39,12 @@ public class Health : MonoBehaviourPun
             playerController.disableInputs = true;
             photonView.RPC("Die", RpcTarget.AllBuffered);
         }
+    }
 
+    [PunRPC]
+    public void UpdateHealth()
+    {
+        healthSlider.value = healthPoints;
     }
 
     [PunRPC]
@@ -48,6 +54,7 @@ public class Health : MonoBehaviourPun
         boxCollider.enabled = false;
         sr.enabled = false;
         playerCanvas.SetActive(false);
+        shooting.enabled = false;
     }
 
     [PunRPC]
@@ -58,7 +65,8 @@ public class Health : MonoBehaviourPun
         sr.enabled = true;
         playerCanvas.SetActive(true);
         healthPoints = healthMax;
-        healthSlider.value = healthPoints;
+        photonView.RPC("UpdateHealth", RpcTarget.AllBuffered);
+        shooting.enabled = true;
     }
 
     public void EnableInputs()

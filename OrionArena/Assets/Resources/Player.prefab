@@ -262,7 +262,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1471726281658067658}
   m_HandleRect: {fileID: 0}
@@ -1138,6 +1138,7 @@ MonoBehaviour:
   sr: {fileID: 5356698472726210173}
   boxCollider: {fileID: 1095269249}
   playerCanvas: {fileID: 6481398573137304021}
+  shooting: {fileID: 0}
   playerController: {fileID: 1095269246}
 --- !u!114 &8152786423219746675
 MonoBehaviour:
