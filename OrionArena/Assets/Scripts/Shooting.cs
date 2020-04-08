@@ -9,10 +9,15 @@ public class Shooting : MonoBehaviour
 
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public Transform[] firePoints;
 
-    public float spread = 0;
+    public float spread = 5;
     public float fireRate = 1f;
     public float fireCD = 0f;
+    public float damage = 10f;
+    public bool isShotgun = false;
+    public float travelTime = 1.5f;
+    public float bulletSpeed = 50;
 
     //public float bulletForce = 20f;
 
@@ -42,7 +47,22 @@ public class Shooting : MonoBehaviour
     [PunRPC]
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        if (isShotgun)
+        {
+            for (int i = 0; i < firePoints.Length; i++)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);
+                bullet.GetComponent<Bullet>().damage = damage;
+                bullet.GetComponent<Bullet>().destroyTime = travelTime;
+                bullet.GetComponent<Bullet>().moveSpeed = bulletSpeed;
+            }
+        }
+        else
+        {
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().damage = damage;
+        }
+
         //bullet.transform.Rotate(0, 0, Random.Range(-spread, spread));
         //Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         //rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);

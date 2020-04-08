@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
-    public GameObject spawnButton;
+    //public GameObject playerPrefab;
+    public GameObject[] playerPrefab;
+    public GameObject spawnPanel;
     public GameObject sceneCam;
 
     public Text spawnTimer;
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        spawnButton.SetActive(true);
+        spawnPanel.SetActive(true);
     }
 
     private void Update()
@@ -65,13 +66,33 @@ public class GameManager : MonoBehaviour
         respawnUI.SetActive(true);
     }
 
-    public void SpawnPlayer()
+    public void SpawnShotgunPlayer()
     {
         float randomValueX = Random.Range(-70, 70);
         float randomValueY = Random.Range(-5, 25);
-        PhotonNetwork.Instantiate(playerPrefab.name, new Vector2(playerPrefab.transform.position.x + randomValueX, playerPrefab.transform.position.y + randomValueY)
+        PhotonNetwork.Instantiate(playerPrefab[0].name, new Vector2(playerPrefab[0].transform.position.x + randomValueX, playerPrefab[0].transform.position.y + randomValueY)
             , Quaternion.identity, 0);
-        spawnButton.SetActive(false);
+        spawnPanel.SetActive(false);
+        sceneCam.SetActive(false);
+    }
+
+    public void SpawnRiflePlayer()
+    {
+        float randomValueX = Random.Range(-70, 70);
+        float randomValueY = Random.Range(-5, 25);
+        PhotonNetwork.Instantiate(playerPrefab[1].name, new Vector2(playerPrefab[1].transform.position.x + randomValueX, playerPrefab[1].transform.position.y + randomValueY)
+            , Quaternion.identity, 0);
+        spawnPanel.SetActive(false);
+        sceneCam.SetActive(false);
+    }
+
+    public void SpawnPistolPlayer()
+    {
+        float randomValueX = Random.Range(-70, 70);
+        float randomValueY = Random.Range(-5, 25);
+        PhotonNetwork.Instantiate(playerPrefab[2].name, new Vector2(playerPrefab[2].transform.position.x + randomValueX, playerPrefab[2].transform.position.y + randomValueY)
+            , Quaternion.identity, 0);
+        spawnPanel.SetActive(false);
         sceneCam.SetActive(false);
     }
 }

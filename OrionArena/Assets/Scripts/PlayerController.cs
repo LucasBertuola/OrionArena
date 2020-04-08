@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     public GameObject playerCam;
+    private Animator anim;
 
     //public bool facingRight = true;
     private bool isGrounded;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         //playerName.text = pv.Owner.NickName;
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         if (pv.IsMine)
         {
             GameManager.instance.localPlayer = this.gameObject;
@@ -64,6 +66,15 @@ public class PlayerController : MonoBehaviour
             moveInput = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
+
             if (isGrounded)
             {
                 extraJumps = extraJumpsValue;
@@ -72,11 +83,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
+                anim.SetTrigger("Jumping");
                 
             }
             else if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0 && !isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
+                anim.SetTrigger("Jumping");
                 extraJumps--;
             }
         }

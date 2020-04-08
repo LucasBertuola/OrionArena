@@ -32,13 +32,17 @@ public class LookAt : MonoBehaviour
         Vector3 aimLocalScale = Vector3.one;
         if (angle > 90 || angle < -90)
         {
-            aimLocalScale.y = -1f;
+            //transform.rotation = Quaternion.Euler(0f, 0f, -angle);
+            transform.localScale = -aimLocalScale;
+            aimLocalScale.y = 1f;
         }
         else
         {
-            aimLocalScale.y = +1f;
+            //transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            transform.localScale = aimLocalScale;
+            aimLocalScale.y = -1f;
         }
-        transform.localScale = aimLocalScale;
+        //transform.localScale = aimLocalScale;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
 

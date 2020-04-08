@@ -7,9 +7,9 @@ public class Bullet : MonoBehaviour
 {
     public GameObject hitGroundEffect;
     public GameObject hitPlayerEffect;
-    public float damage = 10;
+    public float damage = 50;
     public float moveSpeed = 50;
-    public float destroyTime = 3f;
+    public float destroyTime = 1f;
 
     //private PhotonView pv;
 
@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        Physics2D.IgnoreLayerCollision(10, 10);
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
         Destroy(gameObject, destroyTime);
         /*if (pv.IsMine)
