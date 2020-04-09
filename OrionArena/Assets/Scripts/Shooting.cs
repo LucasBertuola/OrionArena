@@ -10,7 +10,7 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public Transform[] firePoints;
-
+    public AudioSource audio;
     public float spread = 5;
     public float fireRate = 1f;
     public float fireCD = 0f;
@@ -24,6 +24,7 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         pv = GetComponent<PhotonView>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,6 +41,8 @@ public class Shooting : MonoBehaviour
                 pv.RPC("Shoot", RpcTarget.AllBuffered);
                 //Shoot();
                 fireCD = fireRate;
+                if (!audio.isPlaying)
+                    audio.Play();
             }
         }
     }
