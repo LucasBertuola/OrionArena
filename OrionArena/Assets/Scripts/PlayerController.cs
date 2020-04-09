@@ -11,12 +11,15 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float jumpForce;
+    public float jetForce;
     private float moveInput;
     public bool disableInputs = false;
 
     private Rigidbody2D rb;
     public GameObject playerCam;
     private Animator anim;
+    public Slider fuelSlider;
+    public ParticleSystem jetSmoke;
 
     //public bool facingRight = true;
     private bool isGrounded;
@@ -26,8 +29,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
 
-    public int extraJumps;
-    public int extraJumpsValue;
+    public float fuelAmount;
+    public float maxFuel;
+    public bool refueling = false;
 
 
     private void Awake()
@@ -38,7 +42,10 @@ public class PlayerController : MonoBehaviour
     {
         pv = GetComponent<PhotonView>();
         //playerName.text = pv.Owner.NickName;
-        extraJumps = extraJumpsValue;
+        fuelSlider.maxValue = maxFuel;
+        fuelAmount = maxFuel;
+        fuelSlider.value = fuelAmount;
+        jetSmoke.Stop();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         if (pv.IsMine)
@@ -75,26 +82,51 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("isMoving", false);
             }
 
-            if (isGrounded)
+            if (isGrounded && fuelAmount < maxFuel)
             {
-                extraJumps = extraJumpsValue;
+                Refuel();
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rb.velocity = Vector2.up * jumpForce;
-                anim.SetTrigger("Jumping");
-                
+                anim.SetTrigger("Jumping");               
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0 && !isGrounded)
+
+            if (Input.GetKey(KeyCode.Space) && fuelAmount > 0 && !isGrounded)
             {
-                rb.velocity = Vector2.up * jumpForce;
-                anim.SetTrigger("Jumping");
-                extraJumps--;
+                rb.velocity = new Vector2(moveInput * speed, jetForce);
+                fuelAmount -= 1 * Time.deltaTime;
+                fuelSlider.value = fuelAmount;
+                if (!jetSmoke.isPlaying)
+                    jetSmoke.Play();
+            }
+            else
+            {
+                jetSmoke.Stop();
             }
         }
 
         
+    }
+
+    public void Refuel()
+    {
+        if (!pv.IsMine)
+            return;
+
+        if (Input.GetKey(KeyCode.Space) || refueling)
+        {
+            return;
+        }
+
+        if (fuelAmount >= maxFuel)
+        {
+            fuelAmount = maxFuel;
+            return;
+        }
+        fuelAmount += 0.5f * Time.deltaTime;
+        fuelSlider.value = fuelAmount;
     }
 
     /*public void Flip()

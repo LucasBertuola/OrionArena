@@ -25,13 +25,18 @@ public class Health : MonoBehaviourPun
         shooting = GetComponent<Shooting>();
         healthPoints = healthMax;
         healthSlider.maxValue = healthMax;
-        photonView.RPC("UpdateHealth", RpcTarget.AllBuffered);
+        UpdateHealth();
     }
 
     public void TakeDamage(float value)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         healthPoints -= value;
-        photonView.RPC("UpdateHealth", RpcTarget.AllBuffered);
+        UpdateHealth();
 
         if (photonView.IsMine && healthPoints <= 0)
         {
@@ -41,7 +46,6 @@ public class Health : MonoBehaviourPun
         }
     }
 
-    [PunRPC]
     public void UpdateHealth()
     {
         healthSlider.value = healthPoints;
@@ -51,6 +55,7 @@ public class Health : MonoBehaviourPun
     public void Die()
     {
         rb.gravityScale = 0;
+        rb.velocity = new Vector2(0,0);
         boxCollider.enabled = false;
         sr.enabled = false;
         playerCanvas.SetActive(false);
@@ -65,7 +70,7 @@ public class Health : MonoBehaviourPun
         sr.enabled = true;
         playerCanvas.SetActive(true);
         healthPoints = healthMax;
-        photonView.RPC("UpdateHealth", RpcTarget.AllBuffered);
+        UpdateHealth();
         shooting.enabled = true;
     }
 
