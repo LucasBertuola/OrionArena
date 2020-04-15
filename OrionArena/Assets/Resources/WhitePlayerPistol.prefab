@@ -1078,7 +1078,7 @@ MonoBehaviour:
   - {fileID: 188776348798815955}
   - {fileID: 2213407726135674273}
   - {fileID: 8441291105263315353}
-  audio: {fileID: 4146581559442939916}
+  gunSound: {fileID: 0}
   spread: 0
   fireRate: 0.4
   fireCD: 0
@@ -1982,15 +1982,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582a0ecce6837c342be359d6796ea4b7, type: 3}
---- !u!198 &3697652112210649643 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8375895043349672411, guid: 582a0ecce6837c342be359d6796ea4b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5146940559575094256}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8510779625317962548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3562848482789392580, guid: 582a0ecce6837c342be359d6796ea4b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 5146940559575094256}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3697652112210649643 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8375895043349672411, guid: 582a0ecce6837c342be359d6796ea4b7,
     type: 3}
   m_PrefabInstance: {fileID: 5146940559575094256}
   m_PrefabAsset: {fileID: 0}

@@ -1705,6 +1705,11 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3532029366862478000, guid: be3d68b03e3935849826f7958143dc73,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3532029366992410293, guid: be3d68b03e3935849826f7958143dc73,
         type: 3}
       propertyPath: m_AnchoredPosition.x

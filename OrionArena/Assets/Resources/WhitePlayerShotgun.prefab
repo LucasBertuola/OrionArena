@@ -767,7 +767,7 @@ MonoBehaviour:
   - {fileID: 188776348798815955}
   - {fileID: 2213407726135674273}
   - {fileID: 8441291105263315353}
-  audio: {fileID: 0}
+  gunSound: {fileID: 8300000, guid: b62a1138e425eb64aa627feaaf69d013, type: 3}
   spread: 15
   fireRate: 0.7
   fireCD: 0
@@ -887,7 +887,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 747ba53d9fcb54b4bb2bdd8ea8c7cc85, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 81005272b7da49c4eba6565a2310f9e6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

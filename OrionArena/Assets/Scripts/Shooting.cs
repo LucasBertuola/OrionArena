@@ -10,7 +10,7 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public Transform[] firePoints;
-    public AudioSource audio;
+    public AudioClip gunSound;
     public float spread = 5;
     public float fireRate = 1f;
     public float fireCD = 0f;
@@ -24,7 +24,7 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         pv = GetComponent<PhotonView>();
-        audio = GetComponent<AudioSource>();
+       
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class Shooting : MonoBehaviour
                 pv.RPC("Shoot", RpcTarget.AllBuffered);
                 //Shoot();
                 fireCD = fireRate;
-                if (!audio.isPlaying)
-                    audio.Play();
+
+                pv.RPC("GunShot", RpcTarget.All);
             }
         }
     }
@@ -69,5 +69,19 @@ public class Shooting : MonoBehaviour
         //bullet.transform.Rotate(0, 0, Random.Range(-spread, spread));
         //Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         //rb.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+    }
+
+
+
+    [PunRPC]
+    public void GunShot()
+    {
+        AudioSource audioRPC = gameObject.AddComponent<AudioSource>();
+        audioRPC.clip = gunSound;
+        audioRPC.spatialBlend = 1;
+        audioRPC.minDistance = 25;
+        audioRPC.maxDistance = 100;
+        audioRPC.Play();
+
     }
 }
