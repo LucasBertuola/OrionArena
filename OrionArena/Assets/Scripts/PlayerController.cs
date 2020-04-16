@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPunObservable
 {
     [SerializeField] PhotonView pv;
     [SerializeField] private Text playerName;
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.localPlayer = this.gameObject;
             playerCam.SetActive(true);
+            playerCam.transform.SetParent(null, false);
             playerName.text = PhotonNetwork.NickName;
             playerName.color = Color.green;
             playerName.fontStyle = FontStyle.Bold;
@@ -125,8 +126,20 @@ public class PlayerController : MonoBehaviour
             fuelAmount = maxFuel;
             return;
         }
-        fuelAmount += 0.5f * Time.deltaTime;
+        fuelAmount += 2f * Time.deltaTime;
         fuelSlider.value = fuelAmount;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(fuelAmount);
+        }
+        else
+        {
+            this.fuelAmount = (float)stream.ReceiveNext();
+        }
     }
 
     /*public void Flip()

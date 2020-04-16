@@ -1,10 +1,11 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPunCallbacks
 {
     //public GameObject playerPrefab;
     public GameObject[] playerPrefab;
@@ -14,11 +15,15 @@ public class GameManager : MonoBehaviour
     public Text spawnTimer;
     public Text pingRate;
     public GameObject respawnUI;
+    public GameObject menu;
 
     private float timeAmount = 5f;
     private bool startRespawn;
 
     public GameObject localPlayer;
+    public GameObject feedBox;
+    public GameObject feedTextPrefab;
+
     public static GameManager instance = null;
 
     private void Awake()
@@ -29,6 +34,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleMenu();
+        }
+
         if (startRespawn)
         {
             StartRespawn();
@@ -52,6 +62,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ToggleMenu()
+    {
+        if(menu.activeSelf)
+        {
+            menu.SetActive(false);
+        }
+        else
+        {
+            menu.SetActive(true);
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        GameObject go = Instantiate(feedTextPrefab, new Vector2(0f, 0f), Quaternion.identity);
+        go.transform.SetParent(feedBox.transform);
+        go.GetComponent<Text>().text = newPlayer.NickName + " has joined the game.";
+        Destroy(go, 3);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        GameObject go = Instantiate(feedTextPrefab, new Vector2(0f, 0f), Quaternion.identity);
+        go.transform.SetParent(feedBox.transform);
+        go.GetComponent<Text>().text = otherPlayer.NickName + " has left the game.";
+        Destroy(go, 3);
+    }
+
     public void PlayerRelocation()
     {
         float randomValueX = Random.Range(-70, 70);
@@ -64,6 +102,12 @@ public class GameManager : MonoBehaviour
         timeAmount = 5f;
         startRespawn = true;
         respawnUI.SetActive(true);
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel(0);
     }
 
     public void SpawnShotgunPlayer()

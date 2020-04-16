@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviourPun
+public class Health : MonoBehaviourPun, IPunObservable
 {
     public Slider healthSlider;
 
@@ -12,7 +12,7 @@ public class Health : MonoBehaviourPun
     public float healthPoints;
 
     public Rigidbody2D rb;
-    public SpriteRenderer sr;
+    public SpriteRenderer[] sr;
     public BoxCollider2D boxCollider;
     public GameObject playerCanvas;
     public Shooting shooting;
@@ -30,11 +30,6 @@ public class Health : MonoBehaviourPun
 
     public void TakeDamage(float value)
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
-
         healthPoints -= value;
         UpdateHealth();
 
@@ -57,7 +52,10 @@ public class Health : MonoBehaviourPun
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0,0);
         boxCollider.enabled = false;
-        sr.enabled = false;
+        foreach (SpriteRenderer sprite in sr)
+        {
+            sprite.enabled = false;
+        }
         playerCanvas.SetActive(false);
         shooting.enabled = false;
     }
@@ -67,11 +65,16 @@ public class Health : MonoBehaviourPun
     {
         rb.gravityScale = 5;
         boxCollider.enabled = true;
-        sr.enabled = true;
+        foreach (SpriteRenderer sprite in sr)
+        {
+            sprite.enabled = true;
+        }
         playerCanvas.SetActive(true);
         healthPoints = healthMax;
         UpdateHealth();
         shooting.enabled = true;
+        playerController.fuelAmount = playerController.maxFuel;
+        playerController.fuelSlider.value = playerController.maxFuel;
     }
 
     public void EnableInputs()
@@ -79,4 +82,15 @@ public class Health : MonoBehaviourPun
         playerController.disableInputs = false;
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(healthPoints);
+        }
+        else
+        {
+            this.healthPoints = (float)stream.ReceiveNext();
+        }
+    }
 }
