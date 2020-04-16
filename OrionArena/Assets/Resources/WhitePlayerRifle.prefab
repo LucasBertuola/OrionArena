@@ -885,6 +885,8 @@ MonoBehaviour:
   fuelAmount: 5
   maxFuel: 5
   refueling: 0
+  jetSound: {fileID: 8300000, guid: 76ddcb1f005442c41984680a5d594477, type: 3}
+  noFueljetSound: {fileID: 8300000, guid: e843f65b66d582a4c985d665c2dfbc9a, type: 3}
 --- !u!114 &7760722467139897112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,7 +909,8 @@ MonoBehaviour:
   - {fileID: 188776348798815955}
   - {fileID: 2213407726135674273}
   - {fileID: 8441291105263315353}
-  gunSound: {fileID: 0}
+  audioObj: {fileID: 34195612283319330, guid: 28be27feb060a8d43b2965a65cfd1d35, type: 3}
+  gunSound: {fileID: 8300000, guid: d795fd6475180e44ab57b3e4bcd75049, type: 3}
   spread: 0
   fireRate: 0.2
   fireCD: 0
@@ -1032,18 +1035,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 19399ab3b48d68e4bae8deaff664775b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a26e6bd92bfd6c043b21647e3bc62aa2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 3
-  MaxDistance: 20
+  MinDistance: 1
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1078,7 +1081,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1108,7 +1111,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.1
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

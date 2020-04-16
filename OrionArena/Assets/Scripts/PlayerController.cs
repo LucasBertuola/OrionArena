@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public float maxFuel;
     public bool refueling = false;
 
+    public AudioClip jetSound;
+    public AudioClip noFueljetSound;
 
     private void Awake()
     {
@@ -100,11 +102,22 @@ public class PlayerController : MonoBehaviour, IPunObservable
                 fuelAmount -= 1 * Time.deltaTime;
                 fuelSlider.value = fuelAmount;
                 if (!jetSmoke.isPlaying)
+                {
                     jetSmoke.Play();
+                    PlayJetpackSound();
+                }
+
+              
             }
             else
             {
                 jetSmoke.Stop();
+                StopJetpackSound();
+            }
+
+            if(fuelAmount <= 0 && !isGrounded)
+            {
+                PlayJetpackSound();
             }
         }
 
@@ -149,4 +162,36 @@ public class PlayerController : MonoBehaviour, IPunObservable
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }*/
+
+
+  AudioSource audioRPC;
+    [PunRPC]
+    public void PlayJetpackSound()
+    {
+ 
+        //audioRPC = gameObject.AddComponent<AudioSource>();
+        //audioRPC.clip = jetSound;
+        //audioRPC.volume = 0.2f;
+
+        //if(!audioRPC.isPlaying)
+        //    audioRPC.Play();
+
+        
+
+    }
+
+
+    [PunRPC]
+    public void StopJetpackSound()
+    {
+       // audioRPC.Stop();
+    }
+
+    public void PlayNoFuelSound()
+    {
+        //AudioSource audioRPC = gameObject.AddComponent<AudioSource>();
+        //audioRPC.clip = noFueljetSound;
+       
+        //audioRPC.Play();
+    }
 }
