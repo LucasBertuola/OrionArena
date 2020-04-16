@@ -9,11 +9,12 @@ public class SfxButton : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        PlaySound(2);
     }
 
-    public void PlaySound()
+    public void PlaySound(int i)
     {
-        audio.clip = clips[Random.Range(0, clips.Length)];
+        audio.clip = clips[i];
         audio.Play();
     }
 }
