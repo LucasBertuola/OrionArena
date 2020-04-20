@@ -1004,8 +1004,8 @@ MonoBehaviour:
   fireCD: 0
   damage: 10
   isShotgun: 0
-  travelTime: 0.7
-  bulletSpeed: 45
+  travelTime: 1.5
+  bulletSpeed: 90
 --- !u!114 &1798243538233507763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1623,6 +1623,7 @@ MonoBehaviour:
     m_Center: {x: -0.50046134, y: 1.0048825, z: 0}
     m_Extent: {x: 1.1609015, y: 1.1997313, z: 0}
   m_UseBatching: 1
+  m_AlwaysUpdate: 1
 --- !u!114 &5080402122690559385
 MonoBehaviour:
   m_ObjectHideFlags: 0

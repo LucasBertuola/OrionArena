@@ -916,8 +916,8 @@ MonoBehaviour:
   fireCD: 0
   damage: 5
   isShotgun: 0
-  travelTime: 0.7
-  bulletSpeed: 40
+  travelTime: 1.5
+  bulletSpeed: 80
 --- !u!114 &1798243538233507763
 MonoBehaviour:
   m_ObjectHideFlags: 0

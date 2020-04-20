@@ -69,6 +69,8 @@ public class Shooting : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Bullet>().damage = damage;
+            bullet.GetComponent<Bullet>().destroyTime = travelTime;
+            bullet.GetComponent<Bullet>().moveSpeed = bulletSpeed;
         }
 
         //bullet.transform.Rotate(0, 0, Random.Range(-spread, spread));
