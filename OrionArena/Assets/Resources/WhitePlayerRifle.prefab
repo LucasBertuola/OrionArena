@@ -765,6 +765,7 @@ GameObject:
   - component: {fileID: 1010191620256947279}
   - component: {fileID: 4706292924845831056}
   - component: {fileID: 5517627368598975976}
+  - component: {fileID: 8539654780671473273}
   m_Layer: 9
   m_Name: WhitePlayerRifle
   m_TagString: Player
@@ -1121,6 +1122,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8539654780671473273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304050180194290750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed0f2204937967438bc762e38eccc57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 188776348798815955}
+  gundir: {fileID: 6304050180766252983}
+  bombprefab: {fileID: 4934220451898147877, guid: 1292cc0f47ac13149b5fad8a6046d84a,
+    type: 3}
+  forceThrown: 500
+  timeForAbility: 5
+  timeAt: 0
+  pv: {fileID: 0}
 --- !u!1 &6304050180340615522
 GameObject:
   m_ObjectHideFlags: 0

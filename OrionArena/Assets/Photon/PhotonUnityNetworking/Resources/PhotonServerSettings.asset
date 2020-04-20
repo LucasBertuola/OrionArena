@@ -41,5 +41,6 @@ MonoBehaviour:
   - Shoot
   - Start
   - StopJetpackSound
+  - UseAbility
   DisableAutoOpenWizard: 1
   ShowSettings: 0
