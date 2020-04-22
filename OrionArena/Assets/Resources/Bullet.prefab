@@ -123,13 +123,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e5ff6c0b4519441a251bc2f174f2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitGroundEffect: {fileID: 1009053605289887545, guid: 3b010d2c53c72044ab2d40682b9c62ec,
+  hitGroundEffect: {fileID: 7716901715769362439, guid: c7f9c48c05723664a9ec9390e99fa357,
     type: 3}
-  hitPlayerEffect: {fileID: 1009053605289887545, guid: e563b985686a67640a1646ad3cb6f692,
+  hitPlayerEffect: {fileID: 8032644829460472749, guid: e2ae55e37ccae10468558c3cb38c9488,
     type: 3}
   damage: 10
   moveSpeed: 40
   destroyTime: 1.5
+  killerName: 
+  localPlayer: {fileID: 0}
 --- !u!50 &2443356504331343000
 Rigidbody2D:
   serializedVersion: 4

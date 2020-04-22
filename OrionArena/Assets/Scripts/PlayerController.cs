@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour, IPunObservable
     private float moveInput;
     public bool disableInputs = false;
 
+    public string myName;
+
     private Rigidbody2D rb;
     public GameObject playerCam;
     private Animator anim;
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
             playerName.text = PhotonNetwork.NickName;
             playerName.color = Color.green;
             playerName.fontStyle = FontStyle.Bold;
+            myName = PhotonNetwork.NickName;
         }
         else
         {

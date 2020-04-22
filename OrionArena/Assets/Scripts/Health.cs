@@ -16,6 +16,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     public BoxCollider2D boxCollider;
     public GameObject playerCanvas;
     public Shooting shooting;
+    public Abilitys abilities;
 
     public PlayerController playerController;
 
@@ -23,6 +24,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     {
         playerController = GetComponent<PlayerController>();
         shooting = GetComponent<Shooting>();
+        abilities = GetComponent<Abilitys>();
         healthPoints = healthMax;
         healthSlider.maxValue = healthMax;
         UpdateHealth();
@@ -58,6 +60,7 @@ public class Health : MonoBehaviourPun, IPunObservable
         }
         playerCanvas.SetActive(false);
         shooting.enabled = false;
+        abilities.enabled = false;
     }
 
     [PunRPC]
@@ -73,6 +76,7 @@ public class Health : MonoBehaviourPun, IPunObservable
         healthPoints = healthMax;
         UpdateHealth();
         shooting.enabled = true;
+        abilities.enabled = true;
         playerController.fuelAmount = playerController.maxFuel;
         playerController.fuelSlider.value = playerController.maxFuel;
     }

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public ConnectedPlayers connectedPlayers;
+    public GameObject connectedPlayersCanvas;
+
     //public GameObject playerPrefab;
     public GameObject[] playerPrefab;
     public GameObject spawnPanel;
@@ -32,6 +35,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         spawnPanel.SetActive(true);
     }
 
+    private void Start()
+    {
+        connectedPlayers.AddLocalPlayer();
+        connectedPlayers.GetComponent<PhotonView>().RPC("UpdatePlayerList", RpcTarget.OthersBuffered, PhotonNetwork.NickName);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,6 +51,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (startRespawn)
         {
             StartRespawn();
+        }
+
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            connectedPlayersCanvas.SetActive(true);
+        }
+        else
+        {
+            connectedPlayersCanvas.SetActive(false);
         }
 
         pingRate.text = "Ping: " + PhotonNetwork.GetPing();
@@ -84,6 +102,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        connectedPlayers.RemovePlayerList(otherPlayer.NickName);
         GameObject go = Instantiate(feedTextPrefab, new Vector2(0f, 0f), Quaternion.identity);
         go.transform.SetParent(feedBox.transform);
         go.GetComponent<Text>().text = otherPlayer.NickName + " has left the game.";

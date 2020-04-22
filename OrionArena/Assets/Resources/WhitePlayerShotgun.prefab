@@ -651,6 +651,7 @@ MonoBehaviour:
   jumpForce: 25
   jetForce: 30
   disableInputs: 0
+  myName: 
   playerCam: {fileID: 9030252693418611094}
   fuelSlider: {fileID: 6673786345109815126}
   jetSmoke: {fileID: 3378943325247943693}
