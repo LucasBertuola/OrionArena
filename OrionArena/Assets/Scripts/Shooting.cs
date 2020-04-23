@@ -25,7 +25,8 @@ public class Shooting : MonoBehaviour
     public float bulletSpeed = 50;
 
     //public float bulletForce = 20f;
-    public Animator fireparticle;
+    public GameObject fireparticle;
+    public Transform fireMark;
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -46,7 +47,7 @@ public class Shooting : MonoBehaviour
                 pv.RPC("Shoot", RpcTarget.AllBuffered);
                 //Shoot();
                 fireCD = fireRate;
-                Invoke("SetFire",0f);
+                pv.RPC("SetFire", RpcTarget.All);
                 pv.RPC("GunShot", RpcTarget.All);
             }
         }
@@ -55,7 +56,7 @@ public class Shooting : MonoBehaviour
     [PunRPC]
     void SetFire()
     {
-        fireparticle.SetBool("fire", true);
+        Instantiate(fireparticle, fireMark);
     }
 
     [PunRPC]
