@@ -25,7 +25,7 @@ public class Shooting : MonoBehaviour
     public float bulletSpeed = 50;
 
     //public float bulletForce = 20f;
-
+    public Animator fireparticle;
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -46,7 +46,7 @@ public class Shooting : MonoBehaviour
                 pv.RPC("Shoot", RpcTarget.AllBuffered);
                 //Shoot();
                 fireCD = fireRate;
-
+                fireparticle.SetBool("fire", true);
                 pv.RPC("GunShot", RpcTarget.All);
             }
         }

@@ -12,12 +12,17 @@ public class CFX_AutoDestructShuriken : MonoBehaviour
 {
 	// If true, deactivate the object instead of destroying it
 	public bool OnlyDeactivate;
-	
+	public float damage;
 	void OnEnable()
 	{
 		StartCoroutine("CheckIfAlive");
+		Invoke("Hit", 0.2f);
 	}
-	
+
+	private void Hit()
+	{
+		GetComponent<CircleCollider2D>().enabled = true;
+	}
 	IEnumerator CheckIfAlive ()
 	{
 		ParticleSystem ps = this.GetComponent<ParticleSystem>();
@@ -39,6 +44,15 @@ public class CFX_AutoDestructShuriken : MonoBehaviour
 					GameObject.Destroy(this.gameObject);
 				break;
 			}
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if(collision.gameObject.CompareTag("Player"))
+		{
+                collision.gameObject.GetComponent<Health>().TakeDamage(damage);
+
 		}
 	}
 }

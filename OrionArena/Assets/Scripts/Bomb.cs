@@ -11,6 +11,8 @@ public class Bomb : MonoBehaviour
     public float timeExplode;
     public float timeThrow = 1f;
     float timeAt;
+    public GameObject particleExplosion;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,7 +55,11 @@ public class Bomb : MonoBehaviour
     }
     void DestroyBomb()
     {
-        Destroy(gameObject);
+        rb.bodyType = RigidbodyType2D.Static;
+
+        GameObject obj = Instantiate(particleExplosion, transform.position, transform.rotation);
+        obj.GetComponent<CFX_AutoDestructShuriken>().damage = damage;
+        Destroy(gameObject,0.2f);
     }
 
     void Throw()
