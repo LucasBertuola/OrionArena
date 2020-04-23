@@ -43,5 +43,6 @@ MonoBehaviour:
   - StopJetpackSound
   - UpdatePlayerList
   - UseAbility
+  - SetFire
   DisableAutoOpenWizard: 1
   ShowSettings: 0

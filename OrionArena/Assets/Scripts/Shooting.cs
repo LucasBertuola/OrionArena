@@ -46,10 +46,16 @@ public class Shooting : MonoBehaviour
                 pv.RPC("Shoot", RpcTarget.AllBuffered);
                 //Shoot();
                 fireCD = fireRate;
-                fireparticle.SetBool("fire", true);
+                Invoke("SetFire",0f);
                 pv.RPC("GunShot", RpcTarget.All);
             }
         }
+    }
+
+    [PunRPC]
+    void SetFire()
+    {
+        fireparticle.SetBool("fire", true);
     }
 
     [PunRPC]
