@@ -62,7 +62,7 @@ Transform:
   - {fileID: 7815769810520500114}
   - {fileID: 2213407726135674273}
   - {fileID: 8441291105263315353}
-  - {fileID: 3140658768444894623}
+  - {fileID: 4722458758988950923}
   m_Father: {fileID: 6304050180766252983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -921,7 +921,7 @@ MonoBehaviour:
   isShotgun: 0
   travelTime: 1.5
   bulletSpeed: 80
-  fireparticle: {fileID: 5583161788172217403}
+  fireparticle: {fileID: 4722458758988950751}
 --- !u!114 &1798243538233507763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,13 +2019,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619863b618859f34a92d5ff2bff76631, type: 3}
---- !u!4 &3140658768444894623 stripped
+--- !u!4 &4722458758988950923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7646082727873626730, guid: 619863b618859f34a92d5ff2bff76631,
     type: 3}
   m_PrefabInstance: {fileID: 4722458758988951541}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5583161788172217403 stripped
+--- !u!95 &4722458758988950751 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 933066632945583054, guid: 619863b618859f34a92d5ff2bff76631,
     type: 3}
