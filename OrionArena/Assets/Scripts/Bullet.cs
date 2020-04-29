@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class Bullet : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class Bullet : MonoBehaviour
 
     public string killerName;
     public GameObject localPlayer;
+    public GameObject shooter;
+
+    private void Start()
+    {
+        killerName = localPlayer.GetComponent<PlayerController>().myName;
+    }
 
     private void Update()
     {
@@ -26,11 +33,11 @@ public class Bullet : MonoBehaviour
 
         PhotonView target = collision.gameObject.GetComponent<PhotonView>();
 
-        if (gameObject.CompareTag("RedBullet"))
+        /*if (gameObject.CompareTag("RedBullet"))
         {
             if (collision.gameObject.CompareTag("BluePlayer") || collision.gameObject.CompareTag("Player"))
             {
-                Instantiate(hitGroundEffect, transform.position, transform.rotation);
+                Instantiate(hitPlayerEffect, transform.position, transform.rotation);
                 collision.gameObject.GetComponent<Health>().TakeDamage(damage);
 
                 //Debug.Log("Red" + collision.gameObject.GetComponent<Health>().healthPoints + collision.gameObject.name);
@@ -44,7 +51,7 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("Player"))
             {
-                Instantiate(hitGroundEffect, transform.position, transform.rotation);
+                Instantiate(hitPlayerEffect, transform.position, transform.rotation);
                 collision.gameObject.GetComponent<Health>().TakeDamage(damage);
 
                 //Debug.Log("Blue" + collision.gameObject.GetComponent<Health>().healthPoints + collision.gameObject.name);
@@ -59,13 +66,31 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.CompareTag("BluePlayer") || collision.gameObject.CompareTag("RedPlayer")
                 || collision.gameObject.CompareTag("Player"))
             {
-                Instantiate(hitGroundEffect, transform.position, transform.rotation);
+                Instantiate(hitPlayerEffect, transform.position, transform.rotation);
                 collision.gameObject.GetComponent<Health>().TakeDamage(damage);
 
                 //Debug.Log("Bullet" + collision.gameObject.GetComponent<Health>().healthPoints + collision.gameObject.gameObject.name);
 
                 DestroyBullet();
             }
+            DestroyBullet();
+        }*/
+
+        if (target != null && (!target.IsMine || target.IsSceneView))
+        {
+            if (target.tag == "Player")
+            {
+                target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
+                Instantiate(hitPlayerEffect, transform.position, transform.rotation);
+
+                if (target.GetComponent<Health>().healthPoints <= 0)
+                {
+                    Player gotKilled = target.Owner;
+                    target.RPC("KilledBy", gotKilled, killerName);
+                    target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
+                }
+            }
+            
             DestroyBullet();
         }
 

@@ -17,6 +17,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     public GameObject playerCanvas;
     public Shooting shooting;
     public Abilitys abilities;
+    public GameObject killText;
 
     public PlayerController playerController;
 
@@ -27,14 +28,11 @@ public class Health : MonoBehaviourPun, IPunObservable
         abilities = GetComponent<Abilitys>();
         healthPoints = healthMax;
         healthSlider.maxValue = healthMax;
-        UpdateHealth();
+        healthSlider.value = healthPoints;
     }
 
-    public void TakeDamage(float value)
+    public void CheckHealth()
     {
-        healthPoints -= value;
-        UpdateHealth();
-
         if (photonView.IsMine && healthPoints <= 0)
         {
             GameManager.instance.EnableRespawn();
@@ -43,9 +41,12 @@ public class Health : MonoBehaviourPun, IPunObservable
         }
     }
 
-    public void UpdateHealth()
+    [PunRPC]
+    public void TakeDamage(float value)
     {
-        healthSlider.value = healthPoints;
+        healthSlider.value -= value;
+        healthPoints = healthSlider.value;
+        CheckHealth();
     }
 
     [PunRPC]
@@ -74,11 +75,29 @@ public class Health : MonoBehaviourPun, IPunObservable
         }
         playerCanvas.SetActive(true);
         healthPoints = healthMax;
-        UpdateHealth();
+        healthSlider.value = healthPoints;
         shooting.enabled = true;
         abilities.enabled = true;
         playerController.fuelAmount = playerController.maxFuel;
         playerController.fuelSlider.value = playerController.maxFuel;
+    }
+
+    [PunRPC]
+    void KilledBy(string name)
+    {
+        GameObject go = Instantiate(killText, new Vector2(0, 0), Quaternion.identity);
+        go.transform.SetParent(GameManager.instance.killFeed.transform, false);
+        go.GetComponent<Text>().text = "You got killed by : " + name;
+        go.GetComponent<Text>().color = Color.red;
+    }
+
+    [PunRPC]
+    void YouKilled(string name)
+    {
+        GameObject go = Instantiate(killText, new Vector2(0, 0), Quaternion.identity);
+        go.transform.SetParent(GameManager.instance.killFeed.transform, false);
+        go.GetComponent<Text>().text = "You killed : " + name;
+        go.GetComponent<Text>().color = Color.green;
     }
 
     public void EnableInputs()

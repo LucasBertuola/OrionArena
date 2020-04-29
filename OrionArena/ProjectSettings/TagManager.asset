@@ -9,6 +9,7 @@ TagManager:
   - BlueBullet
   - RedBullet
   - Bullet
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Ground
   - Player
   - Bullet
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -43,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 1242974091
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

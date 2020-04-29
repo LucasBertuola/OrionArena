@@ -45,6 +45,5 @@ public class LookAt : MonoBehaviour
         //transform.localScale = aimLocalScale;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
-
     }
 }

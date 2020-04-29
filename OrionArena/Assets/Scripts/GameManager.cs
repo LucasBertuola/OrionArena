@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject feedBox;
     public GameObject feedTextPrefab;
 
+    public GameObject killFeed;
+
     public static GameManager instance = null;
 
     private void Awake()

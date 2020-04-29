@@ -70,6 +70,7 @@ public class Shooting : MonoBehaviour
                 bullet.GetComponent<Bullet>().damage = damage;
                 bullet.GetComponent<Bullet>().destroyTime = travelTime;
                 bullet.GetComponent<Bullet>().moveSpeed = bulletSpeed;
+                bullet.GetComponent<Bullet>().localPlayer = this.gameObject;
             }
         }
         else
@@ -78,6 +79,7 @@ public class Shooting : MonoBehaviour
             bullet.GetComponent<Bullet>().damage = damage;
             bullet.GetComponent<Bullet>().destroyTime = travelTime;
             bullet.GetComponent<Bullet>().moveSpeed = bulletSpeed;
+            bullet.GetComponent<Bullet>().localPlayer = this.gameObject;
         }
 
         //bullet.transform.Rotate(0, 0, Random.Range(-spread, spread));
