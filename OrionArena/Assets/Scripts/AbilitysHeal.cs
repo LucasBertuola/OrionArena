@@ -10,7 +10,7 @@ public class AbilitysHeal : Ability
     public GameObject healprefab;
     public float forceThrown;
     public float timeForAbility = 5;
-   
+
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -40,5 +40,8 @@ public class AbilitysHeal : Ability
     {
         GameObject shoot = Instantiate(healprefab, firePoint.position,firePoint.rotation);
         shoot.GetComponent<HealShoot>().defineDir(gundir.rotation);
+        shoot.GetComponent<HealShoot>().player = gameObject;
+
+
     }
 }

@@ -186,7 +186,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4934220451898147877}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 61babce8105e1ee4789eeadc07d816bb, type: 2}
   m_IsTrigger: 0
@@ -207,9 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a29d4745d00bf744b309f23e8f48ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 1
+  heal: 5
   speed: 45
-  timeExplode: 0.2
+  timeExplode: 0.15
   particleHeal: {fileID: 1727626132299242, guid: b0bc1b6b391734647b9bb142bafc0819,
     type: 3}
 --- !u!1 &7130541300151883886

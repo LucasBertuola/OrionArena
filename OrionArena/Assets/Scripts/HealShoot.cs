@@ -10,14 +10,15 @@ public class HealShoot : MonoBehaviour
     public float timeExplode;
     float timeAt;
     public GameObject particleHeal;
-    
-    
+    public GameObject player;
+
+
     private void Update()
     {
-        transform.rotation = gundir;
+       // transform.rotation = gundir;
         Physics2D.IgnoreLayerCollision(10, 10);
-    
-        transform.Translate(transform.right * speed * Time.deltaTime);
+
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
 
         if (timeAt > timeExplode)
         {
@@ -44,6 +45,8 @@ public class HealShoot : MonoBehaviour
 
         GameObject obj = Instantiate(particleHeal, transform.position, Quaternion.Euler(100, 0, 0));
         obj.GetComponent<healParticle>().heal = -heal;
+        obj.GetComponent<healParticle>().player = player;
+
         Destroy(gameObject);
     }
 
