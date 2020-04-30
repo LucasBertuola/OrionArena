@@ -884,6 +884,7 @@ GameObject:
   - component: {fileID: 1010191620256947279}
   - component: {fileID: 4706292924845831056}
   - component: {fileID: 4146581559442939916}
+  - component: {fileID: 5309901942664467480}
   m_Layer: 9
   m_Name: WhitePlayerPistol
   m_TagString: Player
@@ -1247,6 +1248,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5309901942664467480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304050180194290750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54a65bbd97217645a6ef7970829cf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 188776348798815955}
+  gundir: {fileID: 6304050180766252983}
+  healprefab: {fileID: 4934220451898147877, guid: 2208744caca2423488a3c13cedc855c7,
+    type: 3}
+  forceThrown: 0
+  timeForAbility: 5
+  timeAt: 0
+  pv: {fileID: 0}
 --- !u!1 &6304050180340615522
 GameObject:
   m_ObjectHideFlags: 0
