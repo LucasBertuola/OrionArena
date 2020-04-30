@@ -40,6 +40,7 @@ public class Abilitys : MonoBehaviour
         GameObject bomb = Instantiate(bombprefab, firePoint.position, firePoint.rotation);
         bomb.GetComponent<Bomb>().force = forceThrown;
         bomb.GetComponent<Bomb>().gundir = gundir;
-       
+        bomb.GetComponent<Bomb>().localPlayer = this.gameObject;
+
     }
 }

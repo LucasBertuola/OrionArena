@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour, IPunObservable
 {
@@ -18,13 +19,14 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public string myName;
 
     private Rigidbody2D rb;
+    private BoxCollider2D boxCollider;
     public GameObject playerCam;
     private Animator anim;
     public Slider fuelSlider;
     public ParticleSystem jetSmoke;
 
     //public bool facingRight = true;
-    private bool isGrounded;
+    //private bool isGrounded;
 
     public Transform groundCheck;
     public float checkRadius;
@@ -38,9 +40,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public AudioClip jetSound;
     public AudioClip noFueljetSound;
 
-    private void Awake()
-    {
-    }
+    public Light2D flashlight;
 
     void Start()
     {
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
         fuelSlider.value = fuelAmount;
         jetSmoke.Stop();
         rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         if (pv.IsMine)
         {
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
         {
             Physics2D.IgnoreLayerCollision(9, 9);
 
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+            //isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
             moveInput = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
@@ -88,18 +89,18 @@ public class PlayerController : MonoBehaviour, IPunObservable
                 anim.SetBool("isMoving", false);
             }
 
-            if (isGrounded && fuelAmount < maxFuel)
+            if (IsGrounded() && fuelAmount < maxFuel)
             {
                 Refuel();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
                 rb.velocity = Vector2.up * jumpForce;
                 anim.SetTrigger("Jumping");               
             }
 
-            if (Input.GetKey(KeyCode.Space) && fuelAmount > 0 && !isGrounded)
+            if (Input.GetKey(KeyCode.Space) && fuelAmount > 0 && !IsGrounded())
             {
                 rb.velocity = new Vector2(moveInput * speed, jetForce);
                 fuelAmount -= 1 * Time.deltaTime;
@@ -118,13 +119,20 @@ public class PlayerController : MonoBehaviour, IPunObservable
                 StopJetpackSound();
             }
 
-            if(fuelAmount <= 0 && !isGrounded)
+            if (Input.GetKeyDown(KeyCode.F) && flashlight.enabled == true)
+            {
+                flashlight.enabled = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.F) && flashlight.enabled == false)
+            {
+                flashlight.enabled = true;
+            }
+
+            if(fuelAmount <= 0 && !IsGrounded())
             {
                 PlayJetpackSound();
             }
         }
-
-        
     }
 
     public void Refuel()
@@ -146,6 +154,13 @@ public class PlayerController : MonoBehaviour, IPunObservable
         fuelSlider.value = fuelAmount;
     }
 
+    private bool IsGrounded()
+    {
+        float extraHeight = 1f;
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, whatIsGround);
+        return raycastHit.collider != null;
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -158,13 +173,6 @@ public class PlayerController : MonoBehaviour, IPunObservable
         }
     }
 
-    /*public void Flip()
-    {
-        facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
-    }*/
 
 
   AudioSource audioRPC;

@@ -10,6 +10,7 @@ public class Flashlight : MonoBehaviour
     public GameObject player;
 
     public float offset = -90f;
+    public float offsetZ;
 
     void Start()
     {
@@ -26,7 +27,9 @@ public class Flashlight : MonoBehaviour
 
     private void Aiming()
     {
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = offsetZ;
+        Vector3 difference = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
         float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle + offset);
