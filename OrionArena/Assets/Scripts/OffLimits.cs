@@ -9,6 +9,7 @@ public class OffLimits : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("RedPlayer") || collision.gameObject.CompareTag("BluePlayer"))
         {
             collision.gameObject.GetComponent<Health>().TakeDamage(5000);
+            collision.gameObject.GetComponent<Health>().TakeDamage(5000);
         }
     }
 }

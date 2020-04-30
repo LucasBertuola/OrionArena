@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject go = Instantiate(feedTextPrefab, new Vector2(0f, 0f), Quaternion.identity);
         go.transform.SetParent(feedBox.transform);
         go.GetComponent<Text>().text = newPlayer.NickName + " has joined the game.";
-        Destroy(go, 3);
+        Destroy(go, 7);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameObject go = Instantiate(feedTextPrefab, new Vector2(0f, 0f), Quaternion.identity);
         go.transform.SetParent(feedBox.transform);
         go.GetComponent<Text>().text = otherPlayer.NickName + " has left the game.";
-        Destroy(go, 3);
+        Destroy(go, 7);
     }
 
     public void PlayerRelocation()

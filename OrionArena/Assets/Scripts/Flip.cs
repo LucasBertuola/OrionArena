@@ -8,6 +8,8 @@ public class Flip : MonoBehaviour
     [SerializeField] PhotonView pv;
     public GameObject player;
 
+    public float offset;
+
     private void Start()
     {
         pv = player.GetComponent<PhotonView>();
@@ -23,7 +25,9 @@ public class Flip : MonoBehaviour
 
     public void FlipBody()
     {
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = offset;
+        Vector3 difference = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
         float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
         Vector3 bodyLocalScale = Vector3.one;

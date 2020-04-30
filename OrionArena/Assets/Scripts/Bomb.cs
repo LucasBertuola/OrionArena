@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +15,13 @@ public class Bomb : MonoBehaviour
     float timeAt;
     public GameObject particleExplosion;
 
+    public string killerName;
+    public GameObject localPlayer;
+    public GameObject shooter;
+
     private void Start()
     {
+        killerName = localPlayer.GetComponent<PlayerController>().myName;
         rb = GetComponent<Rigidbody2D>();
         Invoke("Colider", 0.2f);
     }
@@ -37,7 +44,7 @@ public class Bomb : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.gameObject.CompareTag("BluePlayer") || collision.gameObject.CompareTag("RedPlayer")
+        /*if (collision.gameObject.CompareTag("BluePlayer") || collision.gameObject.CompareTag("RedPlayer")
                || collision.gameObject.CompareTag("Player"))
         {
             //pv.RPC("SpawnEffect", RpcTarget.AllBuffered);
@@ -50,8 +57,26 @@ public class Bomb : MonoBehaviour
             //pv.RPC("DestroyBullet", RpcTarget.AllBuffered);
             DestroyBomb();
         }
-        //pv.RPC("DestroyBullet", RpcTarget.AllBuffered);
-     
+        //pv.RPC("DestroyBullet", RpcTarget.AllBuffered);*/
+
+        PhotonView target = collision.gameObject.GetComponent<PhotonView>();
+
+        if (target != null)
+        {
+            if (target.tag == "Player")
+            {
+                target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
+
+                if (target.GetComponent<Health>().healthPoints <= 0)
+                {
+                    Player gotKilled = target.Owner;
+                    target.RPC("KilledBy", gotKilled, killerName);
+                    target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
+                }
+            }
+
+            DestroyBomb();
+        }
     }
     void DestroyBomb()
     {
