@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560510620330874443}
   m_LocalRotation: {x: -0, y: -0, z: -0.011302055, w: 0.99993616}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.96, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8914493667788087283}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0, g: 0.71280336, b: 1, a: 1}
+  m_Color: {r: 0.15686275, g: 0.9960785, b: 0.10196079, a: 1}
   m_Intensity: 2
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
@@ -83,10 +83,10 @@ GameObject:
   - component: {fileID: 8914493667788087283}
   - component: {fileID: 1077428144676101287}
   - component: {fileID: 2443356504331343000}
-  - component: {fileID: 5036380722670041003}
   - component: {fileID: 8705646382958943832}
+  - component: {fileID: -6620103536776731029}
   m_Layer: 10
-  m_Name: Bomb
+  m_Name: HealShoot
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 4934220451898147877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2546119003855494656}
   - {fileID: 4246185563924549881}
@@ -147,8 +147,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c69a90ea1b5a5cb41a3a035be18799d4, type: 3}
-  m_Color: {r: 0.15419191, g: 0.7159476, b: 0.7264151, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1b323b2a771651e47979b425fce74abd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -173,31 +173,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5036380722670041003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934220451898147877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c399f593a7ad7144a4d32a7ccb82b3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 100
-  damage: 100
-  gundir: {fileID: 0}
-  timeExplode: 2
-  timeThrow: 0.04
-  particleExplosion: {fileID: 1628744458893394, guid: e243632bb3aff9549abdcfcc2ef0c4f0,
-    type: 3}
 --- !u!58 &8705646382958943832
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,7 +186,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4934220451898147877}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 61babce8105e1ee4789eeadc07d816bb, type: 2}
   m_IsTrigger: 0
@@ -214,6 +195,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-6620103536776731029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934220451898147877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a29d4745d00bf744b309f23e8f48ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heal: 5
+  speed: 45
+  timeExplode: 0.15
+  particleHeal: {fileID: 1727626132299242, guid: b0bc1b6b391734647b9bb142bafc0819,
+    type: 3}
 --- !u!1 &7130541300151883886
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7130541300151883886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.22, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8914493667788087283}
@@ -288,7 +286,7 @@ TrailRenderer:
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -315,8 +313,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.15294118, g: 0.7176471, b: 0.7254902, a: 1}
-      key1: {r: 0.47209862, g: 0.9648543, b: 0.9716981, a: 0}
+      key0: {r: 0.121759705, g: 0.7075472, b: 0.08343716, a: 1}
+      key1: {r: 0.15686275, g: 0.9960785, b: 0.10196079, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

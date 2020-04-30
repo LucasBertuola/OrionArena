@@ -22,7 +22,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     public BoxCollider2D boxCollider;
     public GameObject playerCanvas;
     public Shooting shooting;
-    public Abilitys abilities;
+    public Ability abilities;
     public GameObject killText;
     //public Material[] material;
 
@@ -32,7 +32,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     {
         playerController = GetComponent<PlayerController>();
         shooting = GetComponent<Shooting>();
-        abilities = GetComponent<Abilitys>();
+        abilities = GetComponent<Ability>();
         healthPoints = healthMax;
         healthSlider.maxValue = healthMax;
         healthSlider.value = healthPoints;

@@ -1183,7 +1183,7 @@ MonoBehaviour:
   bombprefab: {fileID: 4934220451898147877, guid: 1292cc0f47ac13149b5fad8a6046d84a,
     type: 3}
   forceThrown: 500
-  timeForAbility: 5
+  timeForAbility: 20
   timeAt: 0
   pv: {fileID: 0}
 --- !u!1 &6304050180340615522

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Abilitys : MonoBehaviour
+public class AbilitysBomb : Ability
 {
     public Transform firePoint;
     public Transform gundir;
