@@ -21,7 +21,7 @@ public class AbilitysHeal : Ability
     [SerializeField] PhotonView pv;
     private void Update()
     {
-        if (Input.GetButton("Fire2") && timeAt >= timeForAbility)
+        if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
         {
             timeAt = 0;
             pv.RPC("UseAbility", RpcTarget.AllBuffered);

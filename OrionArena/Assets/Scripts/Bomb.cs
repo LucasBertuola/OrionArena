@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public PhotonView pv;
     public float force;
     Rigidbody2D rb;
     public float damage;
@@ -21,6 +22,7 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
+        pv = GetComponent<PhotonView>();
         killerName = localPlayer.GetComponent<PlayerController>().myName;
         rb = GetComponent<Rigidbody2D>();
         Invoke("Colider", 0.2f);
@@ -37,47 +39,12 @@ public class Bomb : MonoBehaviour
 
         if (timeAt > timeExplode)
         {
-            DestroyBomb();
+           pv.RPC("DestroyBomb", RpcTarget.AllBuffered);
         }
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-        /*if (collision.gameObject.CompareTag("BluePlayer") || collision.gameObject.CompareTag("RedPlayer")
-               || collision.gameObject.CompareTag("Player"))
-        {
-            //pv.RPC("SpawnEffect", RpcTarget.AllBuffered);
-            
-            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
-            //target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
-
-            //Debug.Log("Bullet" + collision.gameObject.GetComponent<Health>().healthPoints + collision.gameObject.gameObject.name);
-
-            //pv.RPC("DestroyBullet", RpcTarget.AllBuffered);
-            DestroyBomb();
-        }
-        //pv.RPC("DestroyBullet", RpcTarget.AllBuffered);*/
-
-        PhotonView target = collision.gameObject.GetComponent<PhotonView>();
-
-        if (target != null)
-        {
-            if (target.tag == "Player")
-            {
-                target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
-
-                if (target.GetComponent<Health>().healthPoints <= 0)
-                {
-                    Player gotKilled = target.Owner;
-                    target.RPC("KilledBy", gotKilled, killerName);
-                    target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
-                }
-            }
-
-            DestroyBomb();
-        }
-    }
+  
+    [PunRPC]
     void DestroyBomb()
     {
         rb.bodyType = RigidbodyType2D.Static;
@@ -89,7 +56,6 @@ public class Bomb : MonoBehaviour
 
     void Throw()
     {
-        
         rb.AddForce(transform.right * force * Time.deltaTime, ForceMode2D.Impulse);
     }
 
