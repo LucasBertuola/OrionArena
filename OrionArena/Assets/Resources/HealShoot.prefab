@@ -207,11 +207,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a29d4745d00bf744b309f23e8f48ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 5
+  heal: 10
   speed: 45
-  timeExplode: 0.15
+  timeExplode: 0.1
   particleHeal: {fileID: 1727626132299242, guid: b0bc1b6b391734647b9bb142bafc0819,
     type: 3}
+  player: {fileID: 0}
 --- !u!1 &7130541300151883886
 GameObject:
   m_ObjectHideFlags: 0

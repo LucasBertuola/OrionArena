@@ -14174,7 +14174,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.17297189, g: 0.8679245, b: 0.1432894, a: 1}
+      maxColor: {r: 0.17297189, g: 0.8679245, b: 0.1432894, a: 0.29803923}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14236,7 +14236,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14781,7 +14781,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -18610,9 +18610,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d050b69b301f1894db159217e9f25ae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 5
+  heal: 10
   timeHeal: 0.5
   healthParticle: {fileID: 100000, guid: aa3fed151f536ee49b583c6a3ac4a2e1, type: 3}
+  player: {fileID: 0}
 --- !u!1 &1930125201661818
 GameObject:
   m_ObjectHideFlags: 0

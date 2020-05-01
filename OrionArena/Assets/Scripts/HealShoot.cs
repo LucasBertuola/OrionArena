@@ -43,7 +43,7 @@ public class HealShoot : MonoBehaviour
     void DestroyHeal()
     {
 
-        GameObject obj = Instantiate(particleHeal, transform.position, Quaternion.Euler(100, 0, 0));
+        GameObject obj = Instantiate(particleHeal, transform.position, Quaternion.Euler(90, 0, 0));
         obj.GetComponent<healParticle>().heal = -heal;
         obj.GetComponent<healParticle>().player = player;
 

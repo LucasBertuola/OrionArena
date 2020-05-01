@@ -48,5 +48,6 @@ MonoBehaviour:
   - UseAbility
   - YouKilled
   - GainShield
+  - DestroyBomb
   DisableAutoOpenWizard: 1
   ShowSettings: 1
