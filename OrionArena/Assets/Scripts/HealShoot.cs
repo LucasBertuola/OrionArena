@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,15 +32,15 @@ public class HealShoot : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("BluePlayer") || collision.gameObject.CompareTag("RedPlayer")
-               || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-
             DestroyHeal();
         }
 
 
     }
+
+    [PunRPC]
     void DestroyHeal()
     {
 

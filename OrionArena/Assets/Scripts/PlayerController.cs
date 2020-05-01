@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
                 if (!jetSmoke.isPlaying)
                 {
                     jetSmoke.Play();
-                    PlayJetpackSound();
+                    pv.RPC("PlayJetpackSound",RpcTarget.AllBuffered);
                 }
 
               
@@ -130,11 +130,19 @@ public class PlayerController : MonoBehaviour, IPunObservable
 
             if(fuelAmount <= 0 && !IsGrounded())
             {
-                PlayJetpackSound();
+                    pv.RPC("StopJetpackSound", RpcTarget.AllBuffered);
+                    pv.RPC("PlayNoFuelSound", RpcTarget.AllBuffered);
+
             }
+            if (fuelAmount > 0)
+            {
+                notSoundfuel = true;
+            }
+
+           
         }
     }
-
+    bool notSoundfuel;
     public void Refuel()
     {
         if (!pv.IsMine)
@@ -180,12 +188,12 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public void PlayJetpackSound()
     {
  
-        //audioRPC = gameObject.AddComponent<AudioSource>();
-        //audioRPC.clip = jetSound;
-        //audioRPC.volume = 0.2f;
+        audioRPC = gameObject.AddComponent<AudioSource>();
+        audioRPC.clip = jetSound;
+        audioRPC.volume = 0.2f;
 
-        //if(!audioRPC.isPlaying)
-        //    audioRPC.Play();
+        if(!audioRPC.isPlaying)
+            audioRPC.Play();
 
         
 
@@ -195,14 +203,20 @@ public class PlayerController : MonoBehaviour, IPunObservable
     [PunRPC]
     public void StopJetpackSound()
     {
-       // audioRPC.Stop();
+        audioRPC.Stop();
     }
 
+    [PunRPC]
     public void PlayNoFuelSound()
     {
-        //AudioSource audioRPC = gameObject.AddComponent<AudioSource>();
-        //audioRPC.clip = noFueljetSound;
-       
-        //audioRPC.Play();
+        if (notSoundfuel)
+        {
+            AudioSource audioRPC = gameObject.AddComponent<AudioSource>();
+            audioRPC.clip = noFueljetSound;
+            audioRPC.volume = 0.1f;
+            if (!audioRPC.isPlaying)
+                audioRPC.Play();
+            notSoundfuel = false;
+        }
     }
 }

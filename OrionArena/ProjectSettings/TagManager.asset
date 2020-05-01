@@ -10,6 +10,7 @@ TagManager:
   - RedBullet
   - Bullet
   - FxTemporaire
+  - Ground
   layers:
   - Default
   - TransparentFX
