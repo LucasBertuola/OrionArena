@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 08aa15e0-e29c-48c9-a006-b9c63a5c2b1f
+    AppIdRealtime: 
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: sa
+    FixedRegion: 
     Server: 
     Port: 0
     Protocol: 0
@@ -28,27 +28,6 @@ MonoBehaviour:
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
-  RpcList:
-  - ClickRpc
-  - DestroyRpc
-  - DestroySpaceship
-  - Die
-  - Fire
-  - GunShot
-  - KilledBy
-  - PlayJetpackSound
-  - RespawnSpaceship
-  - Revive
-  - SetFire
-  - Shoot
-  - Start
-  - StopJetpackSound
-  - TakeDamage
-  - UpdatePlayerList
-  - UseAbility
-  - YouKilled
-  - GainShield
-  - DestroyBomb
-  - DestroyHeal
-  DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  RpcList: []
+  DisableAutoOpenWizard: 0
+  ShowSettings: 0
