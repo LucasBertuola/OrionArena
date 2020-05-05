@@ -1178,6 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed0f2204937967438bc762e38eccc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundAbility: {fileID: 8300000, guid: 8065ec4bb59b65042bec8357657b846d, type: 3}
   firePoint: {fileID: 188776348798815955}
   gundir: {fileID: 6304050180766252983}
   bombprefab: {fileID: 4934220451898147877, guid: 1292cc0f47ac13149b5fad8a6046d84a,

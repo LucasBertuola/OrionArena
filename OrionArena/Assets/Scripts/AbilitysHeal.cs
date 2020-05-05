@@ -38,10 +38,13 @@ public class AbilitysHeal : Ability
     [PunRPC]
     public virtual void UseAbility()
     {
+        
         GameObject shoot = Instantiate(healprefab, firePoint.position,firePoint.rotation);
-        shoot.GetComponent<HealShoot>().defineDir(gundir.rotation);
+        shoot.GetComponent<HealShoot>().gun = firePoint;
         shoot.GetComponent<HealShoot>().player = gameObject;
-
+        AudioSource audioRPC = shoot.GetComponent<HealShoot>().audioObj;
+        audioRPC.clip = soundAbility;
+        audioRPC.Play();
 
     }
 }

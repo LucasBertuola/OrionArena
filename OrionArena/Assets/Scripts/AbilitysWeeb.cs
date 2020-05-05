@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class AbilitysBomb : Ability
+public class AbilitysWeeb: Ability
 {
     public Transform firePoint;
     public Transform gundir;
-    public GameObject bombprefab;
+    public GameObject weebprefab;
     public float forceThrown;
     public float timeForAbility = 5;
+
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -24,26 +25,26 @@ public class AbilitysBomb : Ability
         {
             timeAt = 0;
             pv.RPC("UseAbility", RpcTarget.AllBuffered);
-       
+
         }
 
-        if(timeAt < timeForAbility)
+        if (timeAt < timeForAbility)
         {
             timeAt += Time.deltaTime;
         }
-        
+
     }
 
     [PunRPC]
     public virtual void UseAbility()
     {
-        GameObject bomb = Instantiate(bombprefab, firePoint.position, firePoint.rotation);
-
-        bomb.GetComponent<Bomb>().force = forceThrown;
-        bomb.GetComponent<Bomb>().gundir = gundir;
-        bomb.GetComponent<Bomb>().localPlayer = this.gameObject;
-        AudioSource audioRPC = bomb.GetComponent<Bomb>().audioObj;
+        
+        GameObject shoot = Instantiate(weebprefab, firePoint.position,firePoint.rotation);
+    
+        shoot.GetComponent<WeebShoot>().player = gameObject;
+        AudioSource audioRPC = shoot.GetComponent<WeebShoot>().audioObj;
         audioRPC.clip = soundAbility;
         audioRPC.Play();
+
     }
 }

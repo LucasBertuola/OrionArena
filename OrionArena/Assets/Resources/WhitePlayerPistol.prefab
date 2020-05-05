@@ -1266,6 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54a65bbd97217645a6ef7970829cf94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundAbility: {fileID: 8300000, guid: d9e6cfaa643aab54e8bd67e125995644, type: 3}
   firePoint: {fileID: 188776348798815955}
   gundir: {fileID: 6304050180766252983}
   healprefab: {fileID: 4934220451898147877, guid: 2208744caca2423488a3c13cedc855c7,

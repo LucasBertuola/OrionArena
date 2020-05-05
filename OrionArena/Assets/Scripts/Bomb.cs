@@ -20,6 +20,8 @@ public class Bomb : MonoBehaviour
     public GameObject localPlayer;
     public GameObject shooter;
 
+    public AudioSource audioObj;
+    public AudioClip soundExplode;
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -50,7 +52,11 @@ public class Bomb : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
 
         GameObject obj = Instantiate(particleExplosion, transform.position, transform.rotation);
-        obj.GetComponent<CFX_AutoDestructShuriken>().damage = damage;
+        obj.GetComponent<ExplodeBomb>().damage = damage;
+        AudioSource audioRPC = obj.GetComponent<ExplodeBomb>().audioObj;
+        audioRPC.clip = soundExplode;
+        if(!audioRPC.isPlaying)
+        audioRPC.Play();
         Destroy(gameObject,0.2f);
     }
 

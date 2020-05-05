@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 3575058152280230672}
   - component: {fileID: 916061233307106504}
   m_Layer: 9
-  m_Name: Player
+  m_Name: PlayerTest
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,15 +566,23 @@ MonoBehaviour:
   playerName: {fileID: 4111334562346027598}
   speed: 15
   jumpForce: 25
+  jetForce: 0
   disableInputs: 0
+  myName: 
   playerCam: {fileID: 1997566038393161601}
+  fuelSlider: {fileID: 0}
+  jetSmoke: {fileID: 0}
   groundCheck: {fileID: 1252726777}
   checkRadius: 0.1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  extraJumps: 0
-  extraJumpsValue: 1
+  fuelAmount: 0
+  maxFuel: 0
+  refueling: 0
+  jetSound: {fileID: 0}
+  noFueljetSound: {fileID: 0}
+  flashlight: {fileID: 0}
 --- !u!114 &931399651964996216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,9 +599,18 @@ MonoBehaviour:
   firePoint: {fileID: 6914375385472160331}
   bulletPrefab: {fileID: 4934220451898147877, guid: 68a5867f3a6cac044bf3d5bba727013c,
     type: 3}
+  firePoints: []
+  audioObj: {fileID: 0}
+  gunSound: {fileID: 0}
   spread: 5
   fireRate: 0.3
   fireCD: 0
+  damage: 10
+  isShotgun: 0
+  travelTime: 1.5
+  bulletSpeed: 50
+  fireparticle: {fileID: 0}
+  fireMark: {fileID: 0}
 --- !u!114 &2851278316687172407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,13 +624,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 585990489569537277}
+  healthFill: {fileID: 0}
   healthMax: 100
   healthPoints: 100
+  isDissolving: 0
+  fade: 1
+  shieldPoints: 0
+  shield: 0
   rb: {fileID: 1095269248}
-  sr: {fileID: 9218465450513703633}
+  sr:
+  - {fileID: 0}
   boxCollider: {fileID: 1095269249}
   playerCanvas: {fileID: 6481398573137304021}
   shooting: {fileID: 0}
+  abilities: {fileID: 0}
+  killText: {fileID: 0}
   playerController: {fileID: 1095269246}
 --- !u!114 &8152786423219746675
 MonoBehaviour:
@@ -1127,6 +1152,7 @@ MonoBehaviour:
     m_Center: {x: -0.1393274, y: 1.5469472, z: 0}
     m_Extent: {x: 0.9766916, y: 1.7406675, z: 0}
   m_UseBatching: 1
+  m_AlwaysUpdate: 1
 --- !u!114 &2828681127950864772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,6 +1204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
   player: {fileID: 5858910312800281875}
+  offset: 0
 --- !u!1 &9218465451027203419
 GameObject:
   m_ObjectHideFlags: 0

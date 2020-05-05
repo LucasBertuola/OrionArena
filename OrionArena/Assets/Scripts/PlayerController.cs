@@ -187,8 +187,9 @@ public class PlayerController : MonoBehaviour, IPunObservable
     [PunRPC]
     public void PlayJetpackSound()
     {
- 
-        audioRPC = gameObject.AddComponent<AudioSource>();
+        if(!audioRPC)
+            audioRPC = gameObject.AddComponent<AudioSource>();
+
         audioRPC.clip = jetSound;
         audioRPC.volume = 0.2f;
 
@@ -203,6 +204,9 @@ public class PlayerController : MonoBehaviour, IPunObservable
     [PunRPC]
     public void StopJetpackSound()
     {
+        if(!audioRPC)
+            audioRPC = gameObject.AddComponent<AudioSource>();
+
         audioRPC.Stop();
     }
 

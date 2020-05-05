@@ -5,25 +5,41 @@ using UnityEngine;
 
 public class HealShoot : MonoBehaviour
 {
+    public PhotonView pv;
+
     public float heal;
     public float speed;
-    Quaternion gundir;
+    public Transform gun;
     public float timeExplode;
     float timeAt;
     public GameObject particleHeal;
     public GameObject player;
+    public AudioSource audioObj;
+    private void Start()
+    {
+        pv = GetComponent<PhotonView>();
+    }
 
 
     private void Update()
     {
-       // transform.rotation = gundir;
-        Physics2D.IgnoreLayerCollision(10, 10);
-
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        if (timeAt > timeExplode)
+        if(timeAt > 0.07f)
         {
-            DestroyHeal();
+            // transform.rotation = gundir;
+            Physics2D.IgnoreLayerCollision(10, 10);
+
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+            if (timeAt > timeExplode)
+            {
+           pv.RPC("DestroyHeal", RpcTarget.AllBuffered);
+
+            }
+
+        }
+        else
+        {
+            transform.position = gun.position;
         }
 
         timeAt += Time.deltaTime;
@@ -34,7 +50,7 @@ public class HealShoot : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ground"))
         {
-            DestroyHeal();
+           pv.RPC("DestroyHeal", RpcTarget.AllBuffered);
         }
 
 
@@ -51,9 +67,5 @@ public class HealShoot : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void defineDir(Quaternion qua)
-    {
-        gundir = qua;
-    } 
-
+    
 }
