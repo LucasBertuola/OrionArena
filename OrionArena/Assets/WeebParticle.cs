@@ -8,14 +8,14 @@ public class WeebParticle : MonoBehaviour
     float timeAt;
     public float timeStun;
     public GameObject player;
-    public GameObject playerHit;
+    public PhotonView playerHit;
     private void Update()
     {
 
         timeAt += Time.deltaTime;
         if(timeAt > timeStun)
         {
-            playerHit.GetComponent<PlayerController>().disableInputs = false;
+             playerHit.RPC("Disable", RpcTarget.All,false);
         }
     }
 

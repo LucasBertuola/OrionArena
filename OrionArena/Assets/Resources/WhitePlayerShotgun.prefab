@@ -961,7 +961,7 @@ MonoBehaviour:
   weebprefab: {fileID: 6858734038156474404, guid: be808ef93e8e49e41977c4f34ff0af68,
     type: 3}
   forceThrown: 0
-  timeForAbility: 20
+  timeForAbility: 4
   timeAt: 0
   pv: {fileID: 0}
 --- !u!1 &6304050180340615522

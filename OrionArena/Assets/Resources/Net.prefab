@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
-  heal: 0
   speed: 40
   gun: {fileID: 0}
   timeExplode: 0.3
@@ -253,6 +252,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: -122413039644974870}
   - {fileID: -122413039644974870}
   viewIdField: 0
   InstantiationId: 0
@@ -282,10 +282,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.026283354, y: 0.025532842}
+  m_Offset: {x: 0.20497221, y: 0.006192088}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -296,7 +296,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6332539, y: 1.539073}
+  m_Size: {x: 1.095765, y: 1.8613992}
   m_EdgeRadius: 0
 --- !u!1001 &4647560832831917347
 PrefabInstance:

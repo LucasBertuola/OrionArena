@@ -37,14 +37,47 @@ public class WeebShoot : MonoBehaviour
 
         timeAt += Time.deltaTime;
 
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(4, 4), 0, -Vector2.up);
+        
+
+            if (hit.collider != null)
+            {
+
+
+            PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
+
+
+            if (target != null && (!target.IsMine || target.IsSceneView))
+            {
+                if (target.tag == "Player")
+                {
+                    target.RPC("Disable", RpcTarget.AllBuffered, true);
+
+                   
+                    pv.RPC("DestroyHitWeeb", RpcTarget.All, target.gameObject);
+
+                }
+            }
+        }
+            
+        
+
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Player"))
-        {
+        PhotonView target = collision.gameObject.GetComponent<PhotonView>();
 
-           pv.RPC("DestroyHitWeeb", RpcTarget.All,collision.gameObject);
+
+        if (target != null && (!target.IsMine || target.IsSceneView))
+        {
+            if (target.tag == "Player")
+            {
+                Debug.Log("Atingiu");
+                pv.RPC("DestroyHitWeeb", RpcTarget.All, target.gameObject);
+
+            }
         }
 
 
@@ -55,14 +88,13 @@ public class WeebShoot : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     [PunRPC]
-    void DestroyHitWeeb(GameObject playerHit)
+    void DestroyHitWeeb(GameObject playerHit, PhotonView target)
     {
-        PlayerController player = playerHit.GetComponent<PlayerController>();
-        player.disableInputs = true;
         
         GameObject weebP = Instantiate(particleWeeb, playerHit.transform);
-        weebP.GetComponent<WeebParticle>().playerHit = playerHit;
+        weebP.GetComponent<WeebParticle>().playerHit = target;
         Destroy(gameObject);
 
     }

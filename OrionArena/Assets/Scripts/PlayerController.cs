@@ -223,4 +223,10 @@ public class PlayerController : MonoBehaviour, IPunObservable
             notSoundfuel = false;
         }
     }
+
+    [PunRPC]
+    public void Disable(bool dis)
+    {
+        disableInputs = dis;
+    }
 }
