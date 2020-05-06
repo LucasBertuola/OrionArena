@@ -16,6 +16,7 @@ public class WeebParticle : MonoBehaviour
         if(timeAt > timeStun)
         {
              playerHit.RPC("Disable", RpcTarget.All,false);
+            Destroy(gameObject);
         }
     }
 

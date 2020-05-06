@@ -958,10 +958,10 @@ MonoBehaviour:
   soundAbility: {fileID: 8300000, guid: 10a139c464769f24bb9eda5248decd38, type: 3}
   firePoint: {fileID: 4760852096937914009}
   gundir: {fileID: 6304050180766252983}
-  weebprefab: {fileID: 6858734038156474404, guid: be808ef93e8e49e41977c4f34ff0af68,
+  weebprefab: {fileID: 6909587925036224643, guid: 4bb4fc5e3b5530140809934734ff5089,
     type: 3}
   forceThrown: 0
-  timeForAbility: 4
+  timeForAbility: 5
   timeAt: 0
   pv: {fileID: 0}
 --- !u!1 &6304050180340615522

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class AbilitysWeeb: Ability
+public class AbilitysWeeb : Ability
 {
     public Transform firePoint;
     public Transform gundir;
@@ -38,13 +38,16 @@ public class AbilitysWeeb: Ability
     [PunRPC]
     public virtual void UseAbility()
     {
-        
-        GameObject shoot = Instantiate(weebprefab, firePoint.position,firePoint.rotation);
-    
+
+        GameObject shoot = Instantiate(weebprefab, firePoint.position, firePoint.rotation);
+
         shoot.GetComponent<WeebShoot>().player = gameObject;
         AudioSource audioRPC = shoot.GetComponent<WeebShoot>().audioObj;
         audioRPC.clip = soundAbility;
         audioRPC.Play();
 
     }
+
+  
+
 }

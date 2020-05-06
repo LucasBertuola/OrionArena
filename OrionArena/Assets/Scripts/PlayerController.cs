@@ -228,5 +228,6 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public void Disable(bool dis)
     {
         disableInputs = dis;
+        Debug.Log("Disable");
     }
 }
