@@ -32,9 +32,12 @@ MonoBehaviour:
   - ClickRpc
   - DestroyBomb
   - DestroyHeal
+  - DestroyHitWeeb
   - DestroyRpc
   - DestroySpaceship
+  - DestroyWeeb
   - Die
+  - Disable
   - Fire
   - GainShield
   - GunShot
@@ -51,8 +54,5 @@ MonoBehaviour:
   - UpdatePlayerList
   - UseAbility
   - YouKilled
-  - DestroyWeeb
-  - DestroyHitWeeb
-  - Disable
   DisableAutoOpenWizard: 1
   ShowSettings: 0

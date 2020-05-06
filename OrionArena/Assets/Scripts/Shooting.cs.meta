@@ -3,7 +3,14 @@ guid: 48a6efa538f717f40aa353a1ef973175
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pv: {instanceID: 0}
+  - firePoint: {instanceID: 0}
+  - bulletPrefab: {instanceID: 0}
+  - audioObj: {instanceID: 0}
+  - gunSound: {instanceID: 0}
+  - fireparticle: {instanceID: 0}
+  - fireMark: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
