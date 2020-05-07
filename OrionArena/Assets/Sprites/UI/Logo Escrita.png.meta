@@ -1,10 +1,43 @@
 fileFormatVersion: 2
-guid: 9c1894fbfa39fe943a925940fbcff710
+guid: 92155e4cf51ff88459e10557ddd65ca6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5760202260919997367
-    second: BackGround_0
+      213: -6036025576222348550
+    second: Logo Escrita_0
+  - first:
+      213: 3360261095713586253
+    second: Logo Escrita_1
+  - first:
+      213: 3240569906905272909
+    second: Logo Escrita_2
+  - first:
+      213: -1398224392217384054
+    second: Logo Escrita_3
+  - first:
+      213: -8997867378019400333
+    second: Logo Escrita_4
+  - first:
+      213: -1532232579703901801
+    second: Logo Escrita_5
+  - first:
+      213: 8337190485484931284
+    second: Logo Escrita_6
+  - first:
+      213: 609654949066537200
+    second: Logo Escrita_7
+  - first:
+      213: 7452236938697057429
+    second: Logo Escrita_8
+  - first:
+      213: 88238942323683711
+    second: Logo Escrita_9
+  - first:
+      213: 6890981495754538374
+    second: Logo Escrita_10
+  - first:
+      213: -1458081273876261555
+    second: Logo Escrita_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -45,10 +78,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,13 +147,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackGround_0
+      name: Logo Escrita_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 4000
-        height: 4000
+        x: 68
+        y: 36
+        width: 402
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +161,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b3d98cff6950ff40800000000000000
-      internalID: 5760202260919997367
+      spriteID: afa281af7babb3ca0800000000000000
+      internalID: -6036025576222348550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Escrita_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 101
+        width: 366
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cb292c9ab02ae20800000000000000
+      internalID: 3360261095713586253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Logo Escrita_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 170
+        width: 377
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42d8ea3921d8fc20800000000000000
+      internalID: 3240569906905272909
       vertices: []
       indices: 
       edges: []
