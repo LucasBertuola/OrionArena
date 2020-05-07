@@ -4,27 +4,38 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using Photon.Pun.UtilityScripts;
 
 public class Points : MonoBehaviour
-{
-    public int points = 0;
-    public Text pointsText;
-    private PhotonView pv;
+{ 
+    public Text playerPoints;
+
+    PhotonView pv;
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
     }
 
-    [PunRPC]
-    void GainPoint()
+    public void AddPoints()
     {
-        points += 1;
-        pointsText.text = "POINTS: " + points.ToString();
+        PhotonNetwork.LocalPlayer.AddScore(1);
+        UpdateText();
 
-        if (points >= 5)
+        if (PhotonNetwork.LocalPlayer.GetScore() >= 5)
         {
-            pv.RPC("ShowWinScreen", RpcTarget.AllBuffered, this.gameObject);
+            pv.RPC("WinScreen", RpcTarget.AllBuffered);
         }
+    }
+
+    public void UpdateText()
+    {
+        playerPoints.text = "POINTS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
+    }
+
+    [PunRPC]
+    void WinScreen()
+    {
+        GameManager.instance.ShowWinScreen(this.gameObject.GetComponent<PhotonView>().Owner);
     }
 }

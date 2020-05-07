@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
+using Photon.Pun.UtilityScripts;
 
 public class PlayerController : MonoBehaviour, IPunObservable
 {
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
             playerName.color = Color.green;
             playerName.fontStyle = FontStyle.Bold;
             myName = PhotonNetwork.NickName;
+            
         }
         else
         {

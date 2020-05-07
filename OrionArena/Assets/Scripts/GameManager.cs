@@ -1,9 +1,11 @@
-﻿using Photon.Pun;
+﻿using ExitGames.Client.Photon;
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun.UtilityScripts;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -98,9 +100,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    [PunRPC]
     public void ShowWinScreen(Player winner)
     {
+        winnerScreen.SetActive(true);
         winScreenText.text = winner.NickName + " Wins!";
         Time.timeScale = 0;
     }

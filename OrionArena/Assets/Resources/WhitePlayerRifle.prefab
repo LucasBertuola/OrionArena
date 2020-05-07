@@ -798,6 +798,7 @@ GameObject:
   - component: {fileID: 4706292924845831056}
   - component: {fileID: 5517627368598975976}
   - component: {fileID: 8539654780671473273}
+  - component: {fileID: 4362614550478161555}
   m_Layer: 9
   m_Name: WhitePlayerRifle
   m_TagString: Player
@@ -1004,8 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbe6ee7f52cf064f89dd7cfe9779a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
-  pointsText: {fileID: 4159820249062622355}
+  playerPoints: {fileID: 4159820249062622355}
 --- !u!114 &267923369730978059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,6 +1206,18 @@ MonoBehaviour:
   timeForAbility: 20
   timeAt: 0
   pv: {fileID: 0}
+--- !u!114 &4362614550478161555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304050180194290750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4df3943860f1d45bfe232053a58d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6304050180340615522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,15 +2322,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582a0ecce6837c342be359d6796ea4b7, type: 3}
---- !u!198 &2340727126214986445 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8375895043349672411, guid: 582a0ecce6837c342be359d6796ea4b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6072759681747893014}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7293299289945947090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3562848482789392580, guid: 582a0ecce6837c342be359d6796ea4b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6072759681747893014}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2340727126214986445 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8375895043349672411, guid: 582a0ecce6837c342be359d6796ea4b7,
     type: 3}
   m_PrefabInstance: {fileID: 6072759681747893014}
   m_PrefabAsset: {fileID: 0}

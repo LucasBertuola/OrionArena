@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 4706292924845831056}
   - component: {fileID: 2321980916652611484}
   - component: {fileID: 4744445951594990717}
+  - component: {fileID: -4217906911265217748}
   m_Layer: 9
   m_Name: WhitePlayerShotgun
   m_TagString: Player
@@ -781,8 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbe6ee7f52cf064f89dd7cfe9779a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: 0
-  pointsText: {fileID: 8857769811014586472}
+  playerPoints: {fileID: 8857769811014586472}
 --- !u!114 &267923369730978059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,6 +983,18 @@ MonoBehaviour:
   timeForAbility: 5
   timeAt: 0
   pv: {fileID: 0}
+--- !u!114 &-4217906911265217748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304050180194290750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4df3943860f1d45bfe232053a58d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6304050180340615522
 GameObject:
   m_ObjectHideFlags: 0

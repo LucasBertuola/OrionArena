@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Photon.Pun.UtilityScripts;
 
 public class Bullet : MonoBehaviour
 {
@@ -89,7 +90,7 @@ public class Bullet : MonoBehaviour
                     Player gotKilled = target.Owner;
                     target.RPC("KilledBy", gotKilled, killerName);
                     target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
-                    localPlayer.GetComponent<PhotonView>().RPC("GainPoint", RpcTarget.AllBuffered);
+                    localPlayer.GetComponent<Points>().AddPoints();
                 }
             }
             

@@ -58,5 +58,6 @@ MonoBehaviour:
   - SetFlashlight
   - GainPoint
   - ShowWinScreen
+  - WinScreen
   DisableAutoOpenWizard: 1
   ShowSettings: 1
