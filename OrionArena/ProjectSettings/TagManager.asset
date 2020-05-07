@@ -48,6 +48,12 @@ TagManager:
   - name: BackGround
     uniqueID: 1242974091
     locked: 0
+  - name: Stars
+    uniqueID: 3869385035
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Pickups
+    uniqueID: 3966196479
     locked: 0

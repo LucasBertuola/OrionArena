@@ -29,7 +29,7 @@ public class healParticle : MonoBehaviour
             {
                 PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
 
-                target.RPC("TakeDamage", RpcTarget.AllBuffered, heal); 
+                target.RPC("Heal", RpcTarget.AllBuffered, heal); 
                 Instantiate(healthParticle,new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 2,-3), Quaternion.Euler(0,90,0));
                 timeAt = 0;
             }

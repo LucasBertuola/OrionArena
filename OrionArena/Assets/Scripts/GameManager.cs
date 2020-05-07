@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     public ConnectedPlayers connectedPlayers;
     public GameObject connectedPlayersCanvas;
 
+    public ConnectedPlayers winnerList;
+    public GameObject winnerScreen;
+    public Text winScreenText;
+
     //public GameObject playerPrefab;
     public GameObject[] playerPrefab;
     public GameObject spawnPanel;
@@ -92,6 +96,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             menu.SetActive(true);
         }
+    }
+
+    [PunRPC]
+    public void ShowWinScreen(Player winner)
+    {
+        winScreenText.text = winner.NickName + " Wins!";
+        Time.timeScale = 0;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

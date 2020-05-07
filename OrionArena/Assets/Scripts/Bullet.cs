@@ -83,11 +83,13 @@ public class Bullet : MonoBehaviour
                 target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
                 Instantiate(hitPlayerEffect, transform.position, transform.rotation);
 
-                if (target.GetComponent<Health>().healthPoints <= 0)
+                if (target.GetComponent<Health>().healthPoints <= 0 && !target.GetComponent<Health>().isDead)
                 {
+                    target.RPC("SetIsDead", RpcTarget.AllBuffered, true);
                     Player gotKilled = target.Owner;
                     target.RPC("KilledBy", gotKilled, killerName);
                     target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
+                    localPlayer.GetComponent<PhotonView>().RPC("GainPoint", RpcTarget.AllBuffered);
                 }
             }
             

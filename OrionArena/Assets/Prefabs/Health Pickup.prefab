@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2732086309934234258
+--- !u!1 &5087065433729873421
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2732086309934234263}
-  - component: {fileID: 2732086309934234260}
-  - component: {fileID: 2732086309934234261}
-  - component: {fileID: 2732086309934234262}
+  - component: {fileID: 5087065433729873416}
+  - component: {fileID: 5087065433729873419}
+  - component: {fileID: 5087065433729873417}
+  - component: {fileID: 7165984610150861981}
   m_Layer: 0
-  m_Name: Shield Pickup
+  m_Name: Health Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2732086309934234263
+--- !u!4 &5087065433729873416
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732086309934234258}
+  m_GameObject: {fileID: 5087065433729873421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.526, y: 29.09, z: 0}
+  m_LocalPosition: {x: -31.64, y: 16.04, z: 0}
   m_LocalScale: {x: 0.993243, y: 0.993243, z: 0.993243}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2732086309934234260
+--- !u!212 &5087065433729873419
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732086309934234258}
+  m_GameObject: {fileID: 5087065433729873421}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 33164d9d2a5e4724f9bd2bf59cf4d38f, type: 2}
+  - {fileID: 2100000, guid: 34b0130d4ee7d9f48b7251329bdc61e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -328770817
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4167936161370802679, guid: 00e1f6a4f9389e4408efaf8737136295,
+  m_Sprite: {fileID: 6994951094687034550, guid: 00e1f6a4f9389e4408efaf8737136295,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,27 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2732086309934234261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732086309934234258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91864fd05c6ab4a45865a093864446b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shieldRegen: 50
-  isRespawning: 0
---- !u!61 &2732086309934234262
+--- !u!61 &5087065433729873417
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2732086309934234258}
+  m_GameObject: {fileID: 5087065433729873421}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -114,8 +100,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.23, y: 3.58}
+    pivot: {x: 0.5017858, y: 0.49818078}
+    oldSize: {x: 2.73, y: 2.68}
     newSize: {x: 0.8, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,3 +110,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &7165984610150861981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087065433729873421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943eb396dcb5dfd48af3bb918eaa5708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthRegen: 50
+  isRespawning: 0

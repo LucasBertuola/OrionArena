@@ -53,6 +53,7 @@ public class Bomb : MonoBehaviour
 
         GameObject obj = Instantiate(particleExplosion, transform.position, transform.rotation);
         obj.GetComponent<ExplodeBomb>().damage = damage;
+        obj.GetComponent<ExplodeBomb>().localPlayer = localPlayer;
         AudioSource audioRPC = obj.GetComponent<ExplodeBomb>().audioObj;
         audioRPC.clip = soundExplode;
         if(!audioRPC.isPlaying)

@@ -121,11 +121,11 @@ public class PlayerController : MonoBehaviour, IPunObservable
 
             if (Input.GetKeyDown(KeyCode.F) && flashlight.enabled == true)
             {
-                flashlight.enabled = false;
+                pv.RPC("SetFlashlight", RpcTarget.AllBuffered, false);
             }
             else if (Input.GetKeyDown(KeyCode.F) && flashlight.enabled == false)
             {
-                flashlight.enabled = true;
+                pv.RPC("SetFlashlight", RpcTarget.AllBuffered, true);
             }
 
             if(fuelAmount <= 0 && !IsGrounded())
@@ -181,7 +181,11 @@ public class PlayerController : MonoBehaviour, IPunObservable
         }
     }
 
-
+    [PunRPC]
+    public void SetFlashlight(bool value)
+    {
+        flashlight.enabled = value;
+    }
 
   AudioSource audioRPC;
     [PunRPC]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Health : MonoBehaviourPun, IPunObservable
 {
@@ -13,6 +14,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     public float healthPoints;
     public bool isDissolving = false;
     public float fade = 1f;
+    public bool isDead = false;
 
     public float shieldPoints = 0f;
     public bool shield = false;
@@ -27,6 +29,8 @@ public class Health : MonoBehaviourPun, IPunObservable
     //public Material[] material;
 
     public PlayerController playerController;
+
+    public Light2D shieldLight;
 
     private void Start()
     {
@@ -50,34 +54,9 @@ public class Health : MonoBehaviourPun, IPunObservable
 
     private void Update()
     {
-        if (photonView.IsMine && healthPoints <= 0 && isDissolving)
+        if (photonView.IsMine)
         {
-            foreach (SpriteRenderer mat in sr)
-            {
-                fade -= Time.deltaTime;
-
-                if (fade <= 0f)
-                {
-                    fade = 0f;
-                    isDissolving = false;
-                }
-
-                mat.material.SetFloat("_Fade", fade);
-            }
-        }
-        else if (photonView.IsMine && healthPoints > 0 && !isDissolving)
-        {
-            foreach (SpriteRenderer mat in sr)
-            {
-                fade += Time.deltaTime;
-
-                if (fade >= 1f)
-                {
-                    fade = 1f;
-                }
-
-                mat.material.SetFloat("_Fade", fade);
-            }
+            photonView.RPC("Dissolve", RpcTarget.AllBuffered);
         }
     }
 
@@ -99,6 +78,7 @@ public class Health : MonoBehaviourPun, IPunObservable
                 healthSlider.GetComponentInChildren<Image>().color = Color.red;
                 healthFill.color = Color.green;
                 shield = false;
+                shieldLight.enabled = false;
             }            
         }
         else
@@ -112,9 +92,24 @@ public class Health : MonoBehaviourPun, IPunObservable
     }
 
     [PunRPC]
+    public void Heal(float value)
+    {
+        if (healthPoints > healthMax)
+        {
+            healthPoints = healthMax;
+        }
+        else
+        {
+            healthPoints += value;
+            healthSlider.value = healthPoints;
+        }
+    }
+
+    [PunRPC]
     public void GainShield(float value)
     {
         shieldPoints += value;
+        shieldLight.enabled = true;
         healthSlider.GetComponentInChildren<Image>().color = Color.green;
         healthFill.color = Color.blue;
         shield = true;
@@ -134,6 +129,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     [PunRPC]
     public void Die()
     {
+        isDissolving = true;
         rb.gravityScale = 0;
         rb.velocity = new Vector2(0,0);
         boxCollider.enabled = false;
@@ -147,7 +143,6 @@ public class Health : MonoBehaviourPun, IPunObservable
             abilities.enabled = false;
         }
         playerController.flashlight.enabled = false;
-        isDissolving = true;
         shooting.enabled = false;
     }
 
@@ -172,6 +167,7 @@ public class Health : MonoBehaviourPun, IPunObservable
         playerController.fuelSlider.value = playerController.maxFuel;
         playerController.flashlight.enabled = true;
         shieldPoints = 0;
+        isDead = false;
     }
 
     [PunRPC]
@@ -192,6 +188,46 @@ public class Health : MonoBehaviourPun, IPunObservable
         go.GetComponent<Text>().text = "You killed : " + name;
         go.GetComponent<Text>().color = Color.green;
         Destroy(go, 7);
+    }
+
+    [PunRPC]
+    void SetIsDead(bool value)
+    {
+        isDead = value;
+    }
+
+    [PunRPC]
+    void Dissolve()
+    {
+        if (healthPoints <= 0 && isDissolving)
+        {
+            foreach (SpriteRenderer mat in sr)
+            {
+                fade -= Time.deltaTime;
+
+                if (fade <= 0f)
+                {
+                    fade = 0f;
+                    isDissolving = false;
+                }
+
+                mat.material.SetFloat("_Fade", fade);
+            }
+        }
+        else if (healthPoints > 0 && !isDissolving)
+        {
+            foreach (SpriteRenderer mat in sr)
+            {
+                fade += Time.deltaTime;
+
+                if (fade >= 1f)
+                {
+                    fade = 1f;
+                }
+
+                mat.material.SetFloat("_Fade", fade);
+            }
+        }
     }
 
     public void EnableInputs()

@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,8 @@ public class HealShoot : MonoBehaviour
 
     private void Update()
     {
-        if(timeAt > 0.07f)
+
+        if (timeAt > 0.07f)
         {
             // transform.rotation = gundir;
             Physics2D.IgnoreLayerCollision(10, 10);
@@ -32,7 +34,7 @@ public class HealShoot : MonoBehaviour
 
             if (timeAt > timeExplode)
             {
-           pv.RPC("DestroyHeal", RpcTarget.AllBuffered);
+                pv.RPC("DestroyHeal", RpcTarget.AllBuffered);
 
             }
 
