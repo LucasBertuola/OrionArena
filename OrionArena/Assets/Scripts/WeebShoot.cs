@@ -7,6 +7,7 @@ using Photon.Realtime;
 
 public class WeebShoot : MonoBehaviour
 {
+    PhotonView pv;
     public float speed;
         public Transform gun;
       public float timeExplode;
@@ -17,9 +18,16 @@ public class WeebShoot : MonoBehaviour
 
     private void Update()
     {
+        pv = GetComponent<PhotonView>();
         Physics2D.IgnoreLayerCollision(10, 10);
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        Destroy(gameObject, timeExplode);
+
+
+        timeAt += Time.deltaTime;
+        if (timeAt > timeExplode)
+        {
+            pv.RPC("DestroyNet", RpcTarget.AllBuffered);
+        }
 
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(5, 10), 0, -Vector2.up);
      
@@ -36,7 +44,8 @@ public class WeebShoot : MonoBehaviour
                     weebP.GetComponent<WeebParticle>().playerHit = target;
                 }
 
-                DestroyNet();
+              pv.RPC("DestroyNet", RpcTarget.AllBuffered);
+
             }
         }
         
@@ -59,11 +68,12 @@ public class WeebShoot : MonoBehaviour
         }
     }
 
+    [PunRPC]
     void DestroyNet()
     {
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
-  
+
 
 }

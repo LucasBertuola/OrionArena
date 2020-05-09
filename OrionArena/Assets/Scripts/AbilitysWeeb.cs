@@ -39,7 +39,7 @@ public class AbilitysWeeb : Ability
     public virtual void UseAbility()
     {
 
-        GameObject shoot = Instantiate(weebprefab, firePoint.position, firePoint.rotation);
+        GameObject shoot = PhotonNetwork.Instantiate("NetShot",firePoint.position, firePoint.rotation);
 
         shoot.GetComponent<WeebShoot>().player = gameObject;
         AudioSource audioRPC = shoot.GetComponent<WeebShoot>().audioObj;
