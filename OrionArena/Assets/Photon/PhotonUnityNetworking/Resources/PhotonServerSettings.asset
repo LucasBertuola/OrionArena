@@ -32,6 +32,7 @@ MonoBehaviour:
   - ClickRpc
   - DestroyBomb
   - DestroyHeal
+  - DestroyNet
   - DestroyRpc
   - DestroySpaceship
   - Die
@@ -57,7 +58,6 @@ MonoBehaviour:
   - UseAbility
   - WinScreen
   - YouKilled
-  - DestroyNet
-  - DestroyBullet
+  - HealParticle
   DisableAutoOpenWizard: 1
   ShowSettings: 0

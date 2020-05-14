@@ -16,6 +16,7 @@ public class HealShoot : MonoBehaviour
     public GameObject particleHeal;
     public GameObject player;
     public AudioSource audioObj;
+
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -24,50 +25,47 @@ public class HealShoot : MonoBehaviour
 
     private void Update()
     {
-
-        if (timeAt > 0.07f)
+        if (pv.IsMine)
         {
-            // transform.rotation = gundir;
-            Physics2D.IgnoreLayerCollision(10, 10);
-
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-            if (timeAt > timeExplode)
+            if (timeAt > 0.07f)
             {
-                pv.RPC("DestroyHeal", RpcTarget.AllBuffered);
+                // transform.rotation = gundir;
+                Physics2D.IgnoreLayerCollision(10, 10);
+
+                transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+                if (timeAt > timeExplode)
+                {
+                    DestroyHeal();
+                }
 
             }
+            else
+            {
+                transform.position = gun.position;
+            }
 
+            timeAt += Time.deltaTime;
         }
-        else
-        {
-            transform.position = gun.position;
-        }
-
-        timeAt += Time.deltaTime;
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.CompareTag("Ground"))
         {
-           pv.RPC("DestroyHeal", RpcTarget.AllBuffered);
+            DestroyHeal();
         }
 
 
     }
 
-    [PunRPC]
+
     void DestroyHeal()
     {
-
-        GameObject obj = Instantiate(particleHeal, transform.position, Quaternion.Euler(90, 0, 0));
-        obj.GetComponent<healParticle>().heal = -heal;
+        GameObject obj = PhotonNetwork.Instantiate("healParticle", transform.position, Quaternion.Euler(90, 0, 0));
+        obj.GetComponent<healParticle>().heal = heal;
         obj.GetComponent<healParticle>().player = player;
 
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
-
-    
 }

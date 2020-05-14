@@ -21,31 +21,34 @@ public class AbilitysWeeb : Ability
     [SerializeField] PhotonView pv;
     private void Update()
     {
-        if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
+        if (pv.IsMine)
         {
-            timeAt = 0;
-            pv.RPC("UseAbility", RpcTarget.AllBuffered);
+            if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
+            {
+                timeAt = 0;
+                UseAbility();
+             
 
-        }
+            }
 
-        if (timeAt < timeForAbility)
-        {
-            timeAt += Time.deltaTime;
+            if (timeAt < timeForAbility)
+            {
+                timeAt += Time.deltaTime;
+            }
         }
 
     }
 
-    [PunRPC]
     public virtual void UseAbility()
     {
+        
+            GameObject shoot = PhotonNetwork.Instantiate("NetShot", firePoint.position, firePoint.rotation);
 
-        GameObject shoot = PhotonNetwork.Instantiate("NetShot",firePoint.position, firePoint.rotation);
-
-        shoot.GetComponent<WeebShoot>().player = gameObject;
-        AudioSource audioRPC = shoot.GetComponent<WeebShoot>().audioObj;
-        audioRPC.clip = soundAbility;
-        audioRPC.Play();
-
+            shoot.GetComponent<WeebShoot>().player = gameObject;
+            AudioSource audioRPC = shoot.GetComponent<WeebShoot>().audioObj;
+            audioRPC.clip = soundAbility;
+            audioRPC.Play();
+        
     }
 
   

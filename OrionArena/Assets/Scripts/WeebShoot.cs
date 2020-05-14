@@ -26,26 +26,32 @@ public class WeebShoot : MonoBehaviour
         timeAt += Time.deltaTime;
         if (timeAt > timeExplode)
         {
-            pv.RPC("DestroyNet", RpcTarget.AllBuffered);
+            DestroyNet();
+           // pv.RPC("DestroyNet", RpcTarget.AllBuffered);
         }
 
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(5, 10), 0, -Vector2.up);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, Vector2.right);
      
             if (hit.collider != null)
             {
-            PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
-
-            if (target != null && (!target.IsMine || target.IsSceneView))
+            if (hit.collider.gameObject != gameObject)
             {
-                if (target.tag == "Player")
+                PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
+
+                if (target != null && (!target.IsMine || target.IsSceneView))
                 {
-                    target.RPC("Disable", RpcTarget.AllBuffered, true);
-                    GameObject weebP = Instantiate(particleWeeb, target.gameObject.transform);
-                    weebP.GetComponent<WeebParticle>().playerHit = target;
+                    if (target.tag == "Player")
+                    {
+                        target.RPC("Disable", RpcTarget.AllBuffered, true);
+                        GameObject weebP = PhotonNetwork.Instantiate("ContrictNet", target.gameObject.transform.position, Quaternion.identity);
+
+                        weebP.GetComponent<WeebParticle>().playerHit = target;
+                    }
+
+                    // pv.RPC("DestroyNet", RpcTarget.AllBuffered);
+                    DestroyNet();
+
                 }
-
-              pv.RPC("DestroyNet", RpcTarget.AllBuffered);
-
             }
         }
         
@@ -60,15 +66,17 @@ public class WeebShoot : MonoBehaviour
             if (target.tag == "Player")
             {
                 target.RPC("Disable", RpcTarget.AllBuffered, true);
-                GameObject weebP =  Instantiate(particleWeeb, target.gameObject.transform);
+                GameObject weebP =  PhotonNetwork.Instantiate("ContrictNet", target.gameObject.transform.position, Quaternion.identity);
                 weebP.GetComponent<WeebParticle>().playerHit = target;
             }
 
+            //target.RPC("DestroyNet", RpcTarget.AllBuffered);
             DestroyNet();
+
         }
     }
 
-    [PunRPC]
+ 
     void DestroyNet()
     {
         PhotonNetwork.Destroy(gameObject);

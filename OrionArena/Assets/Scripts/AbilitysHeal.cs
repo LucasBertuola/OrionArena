@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class AbilitysHeal : Ability
 {
+    [SerializeField] PhotonView pv;
+
     public Transform firePoint;
     public Transform gundir;
     public GameObject healprefab;
@@ -18,28 +20,30 @@ public class AbilitysHeal : Ability
     }
 
     public float timeAt;
-    [SerializeField] PhotonView pv;
     private void Update()
-    {
-        if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
+    { 
+        if (pv.IsMine)
         {
+
+          if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
+          {
             timeAt = 0;
             pv.RPC("UseAbility", RpcTarget.AllBuffered);
 
-        }
+         }
 
         if (timeAt < timeForAbility)
         {
             timeAt += Time.deltaTime;
         }
-
+        }
     }
 
     [PunRPC]
     public virtual void UseAbility()
     {
         
-        GameObject shoot = Instantiate(healprefab, firePoint.position,firePoint.rotation);
+        GameObject shoot = PhotonNetwork.Instantiate("HealShoot", firePoint.position,firePoint.rotation);
         shoot.GetComponent<HealShoot>().gun = firePoint;
         shoot.GetComponent<HealShoot>().player = gameObject;
         AudioSource audioRPC = shoot.GetComponent<HealShoot>().audioObj;
