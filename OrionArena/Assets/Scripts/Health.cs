@@ -175,7 +175,7 @@ public class Health : MonoBehaviourPun, IPunObservable
     {
         GameObject go = Instantiate(killText, new Vector2(0, 0), Quaternion.identity);
         go.transform.SetParent(GameManager.instance.killFeed.transform, false);
-        go.GetComponent<Text>().text = "You got killed by : " + name;
+        go.GetComponent<Text>().text = "Killed by : " + name;
         go.GetComponent<Text>().color = Color.red;
         Destroy(go, 7);
     }

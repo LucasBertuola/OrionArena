@@ -13999,7 +13999,7 @@ GameObject:
   - component: {fileID: -4162210143152890821}
   - component: {fileID: 4689928584228595379}
   m_Layer: 0
-  m_Name: healParticle
+  m_Name: HealParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

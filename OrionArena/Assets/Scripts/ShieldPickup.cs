@@ -7,6 +7,7 @@ public class ShieldPickup : MonoBehaviour
 {
     public float shieldRegen = 50f;
     public bool isRespawning = false;
+    public float spawnTimer = 30f;
 
     private SpriteRenderer sr;
     private Collider2D pickupCollider;
@@ -32,6 +33,7 @@ public class ShieldPickup : MonoBehaviour
             {
                 target.RPC("GainShield", RpcTarget.AllBuffered, shieldRegen);
                 DeactivatePickup();
+                Invoke("ActivatePickup", spawnTimer);
             }           
         }
     }
@@ -40,5 +42,11 @@ public class ShieldPickup : MonoBehaviour
     {
         sr.enabled = false;
         pickupCollider.enabled = false;
+    }
+
+    void ActivatePickup()
+    {
+        sr.enabled = true;
+        pickupCollider.enabled = true;
     }
 }

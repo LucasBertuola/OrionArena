@@ -17,12 +17,17 @@ public class Points : MonoBehaviour
         pv = GetComponent<PhotonView>();
     }
 
+    private void Update()
+    {
+        playerPoints.text = "POINTS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
+    }
+
     public void AddPoints()
     {
         PhotonNetwork.LocalPlayer.AddScore(1);
-        UpdateText();
+        //UpdateText();
 
-        if (PhotonNetwork.LocalPlayer.GetScore() >= 5)
+        if (PhotonNetwork.LocalPlayer.GetScore() >= 10)
         {
             pv.RPC("WinScreen", RpcTarget.AllBuffered);
         }

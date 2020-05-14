@@ -7,6 +7,7 @@ public class HealthPickup : MonoBehaviour
 {
     public float healthRegen = 50f;
     public bool isRespawning = false;
+    public float spawnTimer = 30f;
 
     private SpriteRenderer sr;
     private Collider2D pickupCollider;
@@ -32,6 +33,7 @@ public class HealthPickup : MonoBehaviour
             {
                 target.RPC("Heal", RpcTarget.AllBuffered, healthRegen);
                 DeactivatePickup();
+                Invoke("ActivatePickup", spawnTimer);
             }
         }
     }
@@ -40,5 +42,11 @@ public class HealthPickup : MonoBehaviour
     {
         sr.enabled = false;
         pickupCollider.enabled = false;
+    }
+
+    void ActivatePickup()
+    {
+        sr.enabled = true;
+        pickupCollider.enabled = true;
     }
 }

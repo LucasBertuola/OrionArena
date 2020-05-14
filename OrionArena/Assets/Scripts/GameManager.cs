@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         winnerScreen.SetActive(true);
         winScreenText.text = winner.NickName + " Wins!";
-        Time.timeScale = 0;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

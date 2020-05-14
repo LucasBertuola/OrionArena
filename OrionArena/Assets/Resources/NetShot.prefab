@@ -521,7 +521,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3766914070960416524}
-  - {fileID: 3506277721804615118}
+  - {fileID: 3506277721804615155}
   - {fileID: 4528534692699251053}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -563,7 +563,7 @@ MonoBehaviour:
   particleWeeb: {fileID: 6488014672987319971, guid: 3cfa2d89a02253945a7be36f4f3ec94e,
     type: 3}
   player: {fileID: 0}
-  audioObj: {fileID: 3506277721804614343}
+  audioObj: {fileID: 3506277721804614384}
 --- !u!61 &4698859291551085153
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -748,13 +748,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28be27feb060a8d43b2965a65cfd1d35, type: 3}
---- !u!4 &3506277721804615118 stripped
+--- !u!4 &3506277721804615155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 649823811528030548, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}
   m_PrefabInstance: {fileID: 3506277721804615215}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &3506277721804614343 stripped
+--- !u!82 &3506277721804614384 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 531636774365905726, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}
