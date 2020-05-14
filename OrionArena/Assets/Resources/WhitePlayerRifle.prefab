@@ -1202,8 +1202,8 @@ MonoBehaviour:
   gundir: {fileID: 6304050180766252983}
   bombprefab: {fileID: 4934220451898147877, guid: 1292cc0f47ac13149b5fad8a6046d84a,
     type: 3}
-  forceThrown: 500
-  timeForAbility: 20
+  forceThrown: 200
+  timeForAbility: 12
   timeAt: 0
   pv: {fileID: 0}
 --- !u!114 &4362614550478161555

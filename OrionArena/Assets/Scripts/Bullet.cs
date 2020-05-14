@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     public string killerName;
     public GameObject localPlayer;
     public GameObject shooter;
-
+    float timeAt;
     private void Start()
     {
         killerName = localPlayer.GetComponent<PlayerController>().myName;
@@ -26,7 +26,12 @@ public class Bullet : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(10, 10);
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-        Destroy(gameObject, destroyTime);
+
+        timeAt += Time.deltaTime;
+        if(timeAt > destroyTime)
+        {
+            DestroyBullet();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -110,6 +115,7 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
+       // PhotonNetwork.Destroy(gameObject);
         Destroy(gameObject);
     }
 

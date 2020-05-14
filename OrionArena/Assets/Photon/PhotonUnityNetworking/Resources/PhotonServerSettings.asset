@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 55fc6a5b-ce9d-4a64-88ba-e9baef49c3e1
+    AppIdRealtime: 08aa15e0-e29c-48c9-a006-b9c63a5c2b1f
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: sa
+    FixedRegion: 
     Server: 
     Port: 0
     Protocol: 0
@@ -32,32 +32,32 @@ MonoBehaviour:
   - ClickRpc
   - DestroyBomb
   - DestroyHeal
+  - DestroyNet
   - DestroyRpc
   - DestroySpaceship
   - Die
   - Disable
+  - Dissolve
   - Fire
   - GainShield
   - GunShot
+  - Heal
   - KilledBy
   - PlayJetpackSound
   - PlayNoFuelSound
   - RespawnSpaceship
   - Revive
   - SetFire
+  - SetFlashlight
+  - SetIsDead
   - Shoot
   - Start
   - StopJetpackSound
   - TakeDamage
   - UpdatePlayerList
   - UseAbility
-  - YouKilled
-  - SetIsDead
-  - Dissolve
-  - Heal
-  - SetFlashlight
-  - GainPoint
-  - ShowWinScreen
   - WinScreen
+  - YouKilled
+  - HealParticle
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  ShowSettings: 0

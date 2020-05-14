@@ -32,33 +32,35 @@ public class Bomb : MonoBehaviour
 
     private void Update()
     {
-        if(timeAt < timeThrow)
-        { 
-            transform.rotation = gundir.transform.rotation;
-            Throw();
-        }
-        timeAt += Time.deltaTime;
-
-        if (timeAt > timeExplode)
+        if (pv.IsMine)
         {
-           pv.RPC("DestroyBomb", RpcTarget.AllBuffered);
-        }
+            if (timeAt < timeThrow)
+            {
+                transform.rotation = gundir.transform.rotation;
+                Throw();
+            }
+            timeAt += Time.deltaTime;
 
+            if (timeAt > timeExplode)
+            {
+                DestroyBomb();
+            }
+        }
     }
   
-    [PunRPC]
+
     void DestroyBomb()
     {
         rb.bodyType = RigidbodyType2D.Static;
 
-        GameObject obj = Instantiate(particleExplosion, transform.position, transform.rotation);
+        GameObject obj = PhotonNetwork.Instantiate("Explosion", transform.position, transform.rotation);
         obj.GetComponent<ExplodeBomb>().damage = damage;
         obj.GetComponent<ExplodeBomb>().localPlayer = localPlayer;
         AudioSource audioRPC = obj.GetComponent<ExplodeBomb>().audioObj;
         audioRPC.clip = soundExplode;
         if(!audioRPC.isPlaying)
         audioRPC.Play();
-        Destroy(gameObject,0.2f);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     void Throw()

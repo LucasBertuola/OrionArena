@@ -7,6 +7,7 @@ using Photon.Realtime;
 
 public class WeebShoot : MonoBehaviour
 {
+    PhotonView pv;
     public float speed;
         public Transform gun;
       public float timeExplode;
@@ -17,26 +18,40 @@ public class WeebShoot : MonoBehaviour
 
     private void Update()
     {
+        pv = GetComponent<PhotonView>();
         Physics2D.IgnoreLayerCollision(10, 10);
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-        Destroy(gameObject, timeExplode);
 
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(5, 10), 0, -Vector2.up);
+
+        timeAt += Time.deltaTime;
+        if (timeAt > timeExplode)
+        {
+            DestroyNet();
+           // pv.RPC("DestroyNet", RpcTarget.AllBuffered);
+        }
+
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, Vector2.right);
      
             if (hit.collider != null)
             {
-            PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
-
-            if (target != null && (!target.IsMine || target.IsSceneView))
+            if (hit.collider.gameObject != gameObject)
             {
-                if (target.tag == "Player")
-                {
-                    target.RPC("Disable", RpcTarget.AllBuffered, true);
-                    GameObject weebP = Instantiate(particleWeeb, target.gameObject.transform);
-                    weebP.GetComponent<WeebParticle>().playerHit = target;
-                }
+                PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
 
-                DestroyNet();
+                if (target != null && (!target.IsMine || target.IsSceneView))
+                {
+                    if (target.tag == "Player")
+                    {
+                        target.RPC("Disable", RpcTarget.AllBuffered, true);
+                        GameObject weebP = PhotonNetwork.Instantiate("ContrictNet", target.gameObject.transform.position, Quaternion.identity);
+
+                        weebP.GetComponent<WeebParticle>().playerHit = target;
+                    }
+
+                    // pv.RPC("DestroyNet", RpcTarget.AllBuffered);
+                    DestroyNet();
+
+                }
             }
         }
         
@@ -51,19 +66,22 @@ public class WeebShoot : MonoBehaviour
             if (target.tag == "Player")
             {
                 target.RPC("Disable", RpcTarget.AllBuffered, true);
-                GameObject weebP =  Instantiate(particleWeeb, target.gameObject.transform);
+                GameObject weebP =  PhotonNetwork.Instantiate("ContrictNet", target.gameObject.transform.position, Quaternion.identity);
                 weebP.GetComponent<WeebParticle>().playerHit = target;
             }
 
+            //target.RPC("DestroyNet", RpcTarget.AllBuffered);
             DestroyNet();
+
         }
     }
 
+ 
     void DestroyNet()
     {
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
-  
+
 
 }

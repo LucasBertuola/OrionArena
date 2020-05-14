@@ -20,24 +20,28 @@ public class AbilitysBomb : Ability
     [SerializeField] PhotonView pv;
     private void Update()
     {
-        if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
+        if (pv.IsMine)
         {
-            timeAt = 0;
-            pv.RPC("UseAbility", RpcTarget.AllBuffered);
-       
-        }
+            if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
+            {
+                timeAt = 0;
+                UseAbility();
 
-        if(timeAt < timeForAbility)
-        {
-            timeAt += Time.deltaTime;
+            }
+
+            if (timeAt < timeForAbility)
+            {
+                timeAt += Time.deltaTime;
+
+            }
         }
         
     }
 
-    [PunRPC]
+
     public virtual void UseAbility()
     {
-        GameObject bomb = Instantiate(bombprefab, firePoint.position, firePoint.rotation);
+        GameObject bomb = PhotonNetwork.Instantiate("Bomb", firePoint.position, firePoint.rotation);
 
         bomb.GetComponent<Bomb>().force = forceThrown;
         bomb.GetComponent<Bomb>().gundir = gundir;
