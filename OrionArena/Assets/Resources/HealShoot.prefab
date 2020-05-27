@@ -107,7 +107,7 @@ Transform:
   m_Children:
   - {fileID: 2546119003855494656}
   - {fileID: 4246185563924549881}
-  - {fileID: 5824633763159576702}
+  - {fileID: 5824633763159576701}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -211,14 +211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pv: {fileID: 4125768892158160076}
-  heal: 10
+  heal: 5
   speed: 20
   gun: {fileID: 0}
   timeExplode: 0.3
   particleHeal: {fileID: 1727626132299242, guid: b0bc1b6b391734647b9bb142bafc0819,
     type: 3}
   player: {fileID: 0}
-  audioObj: {fileID: 5824633763159578493}
+  audioObj: {fileID: 5824633763159578432}
 --- !u!114 &4125768892158160076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,13 +462,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28be27feb060a8d43b2965a65cfd1d35, type: 3}
---- !u!4 &5824633763159576702 stripped
+--- !u!4 &5824633763159576701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 649823811528030548, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}
   m_PrefabInstance: {fileID: 5824633763159577506}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &5824633763159578493 stripped
+--- !u!82 &5824633763159578432 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 531636774365905726, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}

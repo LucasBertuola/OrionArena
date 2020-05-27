@@ -124,3 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthRegen: 50
   isRespawning: 0
+  spawnTimer: 120

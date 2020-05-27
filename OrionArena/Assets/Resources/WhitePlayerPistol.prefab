@@ -1061,8 +1061,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 3535694680504218934}
   healthFill: {fileID: 8962229729783830311}
-  healthMax: 100
-  healthPoints: 100
+  healthMax: 50
+  healthPoints: 50
   isDissolving: 0
   fade: 1
   isDead: 0
@@ -1286,6 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundAbility: {fileID: 8300000, guid: d9e6cfaa643aab54e8bd67e125995644, type: 3}
+  pv: {fileID: 0}
   firePoint: {fileID: 188776348798815955}
   gundir: {fileID: 6304050180766252983}
   healprefab: {fileID: 4934220451898147877, guid: 2208744caca2423488a3c13cedc855c7,
@@ -1293,7 +1294,6 @@ MonoBehaviour:
   forceThrown: 0
   timeForAbility: 20
   timeAt: 0
-  pv: {fileID: 0}
 --- !u!114 &8589970654315408863
 MonoBehaviour:
   m_ObjectHideFlags: 0

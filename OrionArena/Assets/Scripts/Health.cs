@@ -165,7 +165,6 @@ public class Health : MonoBehaviourPun, IPunObservable
         }
         playerController.fuelAmount = playerController.maxFuel;
         playerController.fuelSlider.value = playerController.maxFuel;
-        playerController.flashlight.enabled = true;
         shieldPoints = 0;
         isDead = false;
     }

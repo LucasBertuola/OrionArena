@@ -63,7 +63,8 @@ public class PlayerController : MonoBehaviour, IPunObservable
             playerName.color = Color.green;
             playerName.fontStyle = FontStyle.Bold;
             myName = PhotonNetwork.NickName;
-            
+            pv.RPC("SetFlashlight", RpcTarget.AllBuffered, false);
+
         }
         else
         {

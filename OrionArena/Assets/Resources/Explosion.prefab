@@ -9373,7 +9373,7 @@ Transform:
   - {fileID: 4729419422864184}
   - {fileID: 4495328126112120}
   - {fileID: 4635416210929062}
-  - {fileID: 954887213594574892}
+  - {fileID: 307603276078643879}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14261,7 +14261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  audioObj: {fileID: 226327152637033030}
+  audioObj: {fileID: 307603276078644634}
   killerName: 
   localPlayer: {fileID: 0}
   shooter: {fileID: 0}
@@ -23748,13 +23748,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28be27feb060a8d43b2965a65cfd1d35, type: 3}
---- !u!4 &954887213594574892 stripped
+--- !u!4 &307603276078643879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 649823811528030548, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}
   m_PrefabInstance: {fileID: 307603276078643576}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &226327152637033030 stripped
+--- !u!82 &307603276078644634 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 531636774365905726, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}

@@ -139,6 +139,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
+        PhotonNetwork.LocalPlayer.SetScore(0);
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel(0);
     }

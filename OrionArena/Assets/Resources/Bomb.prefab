@@ -107,7 +107,7 @@ Transform:
   m_Children:
   - {fileID: 2546119003855494656}
   - {fileID: 4246185563924549881}
-  - {fileID: 4478965206293056973}
+  - {fileID: 3975790407808808774}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -196,16 +196,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
   force: 100
-  damage: 6
+  damage: 35
   gundir: {fileID: 0}
-  timeExplode: 2
+  timeExplode: 1.5
   timeThrow: 0.04
   particleExplosion: {fileID: 1628744458893394, guid: e243632bb3aff9549abdcfcc2ef0c4f0,
     type: 3}
   killerName: 
   localPlayer: {fileID: 0}
   shooter: {fileID: 0}
-  audioObj: {fileID: 3480183670130882471}
+  audioObj: {fileID: 3975790407808807035}
   soundExplode: {fileID: 8300000, guid: b968887d223d33841b30669aeaace1cf, type: 3}
 --- !u!58 &8705646382958943832
 CircleCollider2D:
@@ -476,13 +476,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28be27feb060a8d43b2965a65cfd1d35, type: 3}
---- !u!4 &4478965206293056973 stripped
+--- !u!4 &3975790407808808774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 649823811528030548, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}
   m_PrefabInstance: {fileID: 3975790407808808089}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &3480183670130882471 stripped
+--- !u!82 &3975790407808807035 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 531636774365905726, guid: 28be27feb060a8d43b2965a65cfd1d35,
     type: 3}

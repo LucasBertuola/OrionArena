@@ -973,8 +973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 8995920816516137452}
   healthFill: {fileID: 1737968030827912163}
-  healthMax: 100
-  healthPoints: 100
+  healthMax: 50
+  healthPoints: 50
   isDissolving: 0
   fade: 1
   isDead: 0
