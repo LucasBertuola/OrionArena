@@ -12,13 +12,27 @@ public class MenuManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject createUser;
     [SerializeField] private InputField userNameInput, createRoomInput, joinRoomInput;
     [SerializeField] private GameObject connectingText;
+    [SerializeField] private GameObject menu;
 
     const string playerNamePrefKey = "PlayerName";
 
     private void Awake()
     {
-        PhotonNetwork.ConnectUsingSettings();
+        PhotonNetwork.Disconnect();
+        //PhotonNetwork.ConnectUsingSettings();
         //PhotonNetwork.AutomaticallySyncScene = true;
+    }
+
+    public void Play()
+    {
+        PhotonNetwork.ConnectUsingSettings();
+        connectingText.SetActive(true);
+        menu.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     public override void OnConnectedToMaster()
