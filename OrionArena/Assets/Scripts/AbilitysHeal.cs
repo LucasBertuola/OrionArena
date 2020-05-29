@@ -11,7 +11,6 @@ public class AbilitysHeal : Ability
     public Transform gundir;
     public GameObject healprefab;
     public float forceThrown;
-    public float timeForAbility = 5;
 
     private void Start()
     {
@@ -19,7 +18,6 @@ public class AbilitysHeal : Ability
         timeAt = timeForAbility;
     }
 
-    public float timeAt;
     private void Update()
     { 
         if (pv.IsMine)
@@ -28,7 +26,8 @@ public class AbilitysHeal : Ability
           if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
           {
             timeAt = 0;
-            pv.RPC("UseAbility", RpcTarget.AllBuffered);
+            bar.ResetAbility();
+                UseAbility();
 
          }
 
@@ -39,7 +38,7 @@ public class AbilitysHeal : Ability
         }
     }
 
-    [PunRPC]
+    
     public virtual void UseAbility()
     {
         

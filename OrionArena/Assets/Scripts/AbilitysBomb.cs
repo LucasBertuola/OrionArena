@@ -9,14 +9,12 @@ public class AbilitysBomb : Ability
     public Transform gundir;
     public GameObject bombprefab;
     public float forceThrown;
-    public float timeForAbility = 5;
     private void Start()
     {
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
     }
 
-    public float timeAt;
     [SerializeField] PhotonView pv;
     private void Update()
     {
@@ -25,6 +23,7 @@ public class AbilitysBomb : Ability
             if (Input.GetButton("Fire2") && pv.IsMine && timeAt >= timeForAbility)
             {
                 timeAt = 0;
+                bar.ResetAbility();
                 UseAbility();
 
             }

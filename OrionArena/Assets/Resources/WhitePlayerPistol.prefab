@@ -1286,14 +1286,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundAbility: {fileID: 8300000, guid: d9e6cfaa643aab54e8bd67e125995644, type: 3}
+  timeForAbility: 15
+  timeAt: 0
+  bar: {fileID: 8921970244498239179}
   pv: {fileID: 0}
   firePoint: {fileID: 188776348798815955}
   gundir: {fileID: 6304050180766252983}
   healprefab: {fileID: 4934220451898147877, guid: 2208744caca2423488a3c13cedc855c7,
     type: 3}
   forceThrown: 0
-  timeForAbility: 20
-  timeAt: 0
 --- !u!114 &8589970654315408863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2117,6 +2118,76 @@ PrefabInstance:
       propertyPath: m_Name
       value: PointsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7605
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.44674772
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.21966667
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.30000305
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5562394
+      objectReference: {fileID: 0}
+    - target: {fileID: 931044259576450511, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.022333333
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765005233458200972, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 5309901942664467480}
+    - target: {fileID: 2408581422981332893, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258493729344879760, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9875
+      objectReference: {fileID: 0}
     - target: {fileID: 8770120831676562873, guid: 1bf47b89c27ddd0429554a88f5769a1f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2240,6 +2311,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8921970244498239179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1765005233458200972, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7183164723865022279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d35c7b163f326441bb532fe92d29926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7572394174418113302
