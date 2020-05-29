@@ -9,7 +9,6 @@ public class AbilitysWeeb : Ability
     public Transform gundir;
     public GameObject weebprefab;
     public float forceThrown;
-    public float timeForAbility = 5;
 
     private void Start()
     {
@@ -17,7 +16,6 @@ public class AbilitysWeeb : Ability
         timeAt = timeForAbility;
     }
 
-    public float timeAt;
     [SerializeField] PhotonView pv;
     private void Update()
     {
@@ -27,7 +25,7 @@ public class AbilitysWeeb : Ability
             {
                 timeAt = 0;
                 UseAbility();
-             
+                bar.ResetAbility();
 
             }
 
