@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using WebSocketSharp;
 
 public class MenuManager : MonoBehaviourPunCallbacks
 {
@@ -13,6 +14,8 @@ public class MenuManager : MonoBehaviourPunCallbacks
     [SerializeField] private InputField userNameInput, createRoomInput, joinRoomInput;
     [SerializeField] private GameObject connectingText;
     [SerializeField] private GameObject menu;
+
+    public SfxButton sfx;
 
     const string playerNamePrefKey = "PlayerName";
 
@@ -25,6 +28,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     public void Play()
     {
+        sfx.PlaySound(3);
         PhotonNetwork.ConnectUsingSettings();
         connectingText.SetActive(true);
         menu.SetActive(false);
@@ -32,6 +36,8 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     public void Exit()
     {
+        sfx.PlaySound(5);
+
         Application.Quit();
     }
 
@@ -73,14 +79,34 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     public void OnJoinRoom()
     {
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 10;
-        PhotonNetwork.JoinOrCreateRoom(joinRoomInput.text, roomOptions, TypedLobby.Default);
+        if (!createRoomInput.text.IsNullOrEmpty())
+        {
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.MaxPlayers = 10;
+            PhotonNetwork.JoinOrCreateRoom(joinRoomInput.text, roomOptions, TypedLobby.Default);
+            sfx.PlaySound(1);
+
+        }
+        else
+        {
+            sfx.PlaySound(4);
+
+        }
     }
 
     public void OnCreateRoom()
     {
-        PhotonNetwork.CreateRoom(createRoomInput.text, new RoomOptions { MaxPlayers = 10 }, null);
+        if (!createRoomInput.text.IsNullOrEmpty())
+        {
+            PhotonNetwork.CreateRoom(createRoomInput.text, new RoomOptions { MaxPlayers = 10 }, null);
+            sfx.PlaySound(1);
+
+        }
+        else
+        {
+            
+            sfx.PlaySound(4);
+        }
     }
 
     public void OnNameFieldChanged()

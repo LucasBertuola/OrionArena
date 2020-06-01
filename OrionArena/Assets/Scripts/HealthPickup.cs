@@ -40,6 +40,7 @@ public class HealthPickup : MonoBehaviour
 
     void DeactivatePickup()
     {
+        GetComponent<AudioSource>().Play();
         sr.enabled = false;
         pickupCollider.enabled = false;
     }
