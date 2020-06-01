@@ -19,7 +19,7 @@ public class Points : MonoBehaviour
 
     private void Update()
     {
-        playerPoints.text = "POINTS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
+        playerPoints.text = "KILLS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
     }
 
     public void AddPoints()
@@ -35,7 +35,7 @@ public class Points : MonoBehaviour
 
     public void UpdateText()
     {
-        playerPoints.text = "POINTS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
+        playerPoints.text = "KILLS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
     }
 
     [PunRPC]

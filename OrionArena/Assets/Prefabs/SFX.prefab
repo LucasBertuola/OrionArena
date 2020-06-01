@@ -49,6 +49,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f70b2cbcd0ee06a4b997b7dface099ff, type: 3}
   - {fileID: 8300000, guid: 67f98181b4fe0f247aea8f9c4aa34b28, type: 3}
   - {fileID: 8300000, guid: 4bf1b5b0567a8fd479de1b941693392e, type: 3}
+  - {fileID: 8300000, guid: e2c6c6ea303539543a469cbd2f80a8e7, type: 3}
+  - {fileID: 8300000, guid: bd4e216b6f3a8da458224b40d4d5b756, type: 3}
 --- !u!82 &3772165105514071447
 AudioSource:
   m_ObjectHideFlags: 0
@@ -67,7 +69,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 30
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
