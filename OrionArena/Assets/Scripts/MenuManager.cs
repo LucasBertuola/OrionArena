@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-using WebSocketSharp;
+//using WebSocketSharp;
 
 public class MenuManager : MonoBehaviourPunCallbacks
 {
@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     public void OnJoinRoom()
     {
-        if (!createRoomInput.text.IsNullOrEmpty())
+        if (createRoomInput.text != "")
         {
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.MaxPlayers = 10;
@@ -96,7 +96,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
 
     public void OnCreateRoom()
     {
-        if (!createRoomInput.text.IsNullOrEmpty())
+        if (createRoomInput.text != "")
         {
             PhotonNetwork.CreateRoom(createRoomInput.text, new RoomOptions { MaxPlayers = 10 }, null);
             sfx.PlaySound(1);

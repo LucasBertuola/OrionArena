@@ -19,7 +19,7 @@ public class Points : MonoBehaviour
 
     private void Update()
     {
-        playerPoints.text = "KILLS: " + PhotonNetwork.LocalPlayer.GetScore().ToString();
+        playerPoints.text = "KILLS: " + PhotonNetwork.LocalPlayer.GetScore().ToString() + "/10";
     }
 
     public void AddPoints()
