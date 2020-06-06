@@ -656,17 +656,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1977275491}
-        m_MethodName: PlaySound
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &292631012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,7 +1527,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cb61b4d5ae6e2684dbeb0bfd4ec86d8a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.413
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1764,6 +1753,7 @@ MonoBehaviour:
   joinRoomInput: {fileID: 609123916}
   connectingText: {fileID: 1260596788}
   menu: {fileID: 1905619540}
+
 --- !u!1001 &844268047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1880,6 +1870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   destroyTime: 15
+
 --- !u!1 &853231302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,17 +3805,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1977275491}
-        m_MethodName: PlaySound
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1850006901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4474,7 +4454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2082560717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4507,12 +4487,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 5760202260919997367, guid: 9c1894fbfa39fe943a925940fbcff710,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
