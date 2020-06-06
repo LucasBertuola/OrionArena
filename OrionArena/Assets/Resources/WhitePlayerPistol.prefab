@@ -2178,6 +2178,12 @@ PrefabInstance:
       propertyPath: ability
       value: 
       objectReference: {fileID: 5309901942664467480}
+    - target: {fileID: 2209774158962126426, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7119002349883303594, guid: 7a6e1f1c4e021224da6f48ee0875bc7c,
+        type: 3}
     - target: {fileID: 2408581422981332893, guid: 1bf47b89c27ddd0429554a88f5769a1f,
         type: 3}
       propertyPath: m_FontData.m_FontSize
@@ -2188,6 +2194,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.9875
       objectReference: {fileID: 0}
+    - target: {fileID: 5878691808052141043, guid: 1bf47b89c27ddd0429554a88f5769a1f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7119002349883303594, guid: 7a6e1f1c4e021224da6f48ee0875bc7c,
+        type: 3}
     - target: {fileID: 8770120831676562873, guid: 1bf47b89c27ddd0429554a88f5769a1f,
         type: 3}
       propertyPath: m_LocalPosition.x
