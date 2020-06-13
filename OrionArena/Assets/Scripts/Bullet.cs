@@ -95,7 +95,9 @@ public class Bullet : MonoBehaviour
                     Player gotKilled = target.Owner;
                     target.RPC("KilledBy", gotKilled, killerName);
                     target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
-                    localPlayer.GetComponent<Points>().AddPoints();
+
+                    target.RPC("PlaySoundVoice", RpcTarget.AllBuffered);
+                        localPlayer.GetComponent<Points>().AddPoints();
                 }
             }
             

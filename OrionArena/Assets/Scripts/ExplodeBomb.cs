@@ -43,6 +43,9 @@ public class ExplodeBomb : MonoBehaviour
                             Player gotKilled = target.Owner;
                             target.RPC("KilledBy", gotKilled, killerName);
                             target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
+
+                            target.RPC("PlaySoundVoice", RpcTarget.AllBuffered);
+
                             localPlayer.GetComponent<Points>().AddPoints();
                         }
                     }
