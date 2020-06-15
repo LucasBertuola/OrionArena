@@ -22,38 +22,7 @@ public class ExplodeBomb : MonoBehaviour
     private void Update()
     {
         timeAt = Time.deltaTime;
-
-        if (timeAt > 0.2 && timeAt < 0.4)
-        {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 10, Vector2.up);
-            foreach (RaycastHit2D hit in hits)
-            {
-
-                if (hit.collider != null)
-                {
-                    PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
-
-                    if (target.tag == "Player")
-                    {
-                        target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
-
-                        if (target.GetComponent<Health>().healthPoints <= 0 && !target.GetComponent<Health>().isDead)
-                        {
-                            target.RPC("SetIsDead", RpcTarget.AllBuffered, true);
-                            Player gotKilled = target.Owner;
-                            target.RPC("KilledBy", gotKilled, killerName);
-                            target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
-
-                            target.RPC("PlaySoundVoice", RpcTarget.AllBuffered);
-
-                            localPlayer.GetComponent<Points>().AddPoints();
-                        }
-                    }
-
-                }
-            }
-        }
-    }
+      }
     void OnEnable()
 	{
 		Invoke("Hit", 0.2f);
@@ -86,6 +55,9 @@ public class ExplodeBomb : MonoBehaviour
                     Player gotKilled = target.Owner;
                     target.RPC("KilledBy", gotKilled, killerName);
                     target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
+
+                    GameManager.instance.PlaySoundVoice(1);
+
                     localPlayer.GetComponent<Points>().AddPoints();
                 }
             }

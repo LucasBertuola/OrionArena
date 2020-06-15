@@ -914,6 +914,7 @@ MonoBehaviour:
   playerCam: {fileID: 2228944661078846275}
   fuelSlider: {fileID: 1602589369113966843}
   jetSmoke: {fileID: 2340727126214986445}
+  killspread: 0
   groundCheck: {fileID: 5704143173901187092}
   checkRadius: 0.1
   whatIsGround:

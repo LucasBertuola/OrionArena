@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, IPunObservable
     public Slider fuelSlider;
     public ParticleSystem jetSmoke;
 
+    public int killspread = 0;
     //public bool facingRight = true;
     //private bool isGrounded;
 

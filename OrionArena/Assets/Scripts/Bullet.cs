@@ -14,12 +14,14 @@ public class Bullet : MonoBehaviour
     public float destroyTime = 1f;
 
     public string killerName;
+    public PlayerController killer;
     public GameObject localPlayer;
     public GameObject shooter;
     float timeAt;
     private void Start()
     {
         killerName = localPlayer.GetComponent<PlayerController>().myName;
+        killer = localPlayer.GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -96,8 +98,21 @@ public class Bullet : MonoBehaviour
                     target.RPC("KilledBy", gotKilled, killerName);
                     target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
 
-                    target.RPC("PlaySoundVoice", RpcTarget.AllBuffered);
-                        localPlayer.GetComponent<Points>().AddPoints();
+                    if (killer.killspread == 0)
+                    {
+                        GameManager.instance.PlaySoundVoice(0);
+                    }else if (killer.killspread == 1)
+                    {
+                        GameManager.instance.PlaySoundVoice(2);
+                    }
+                    else if (killer.killspread >= 2)
+                    {
+                        GameManager.instance.PlaySoundVoice(3);
+                    }
+
+                    killer.killspread++;
+
+                    localPlayer.GetComponent<Points>().AddPoints();
                 }
             }
             

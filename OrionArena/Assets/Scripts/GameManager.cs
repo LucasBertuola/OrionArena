@@ -179,16 +179,33 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     AudioSource audioRPC;
-    [PunRPC]
-     public void PlaySoundVoice()
+     public void PlaySoundVoice(int value)
     {
-        audioRPC.clip = vozes[0];
-
+        
         if (!audioRPC)
             audioRPC = gameObject.AddComponent<AudioSource>();
 
+        if (value == 0)
+        {
+            audioRPC.clip = vozes[Random.Range(0,1)];
+        }
+        else if(value == 1)
+        {
+            audioRPC.clip = vozes[2];
+        }
+        else if (value == 2)
+        {
+            audioRPC.clip = vozes[3];
+        }
+        else if (value == 3)
+        {
+            audioRPC.clip = vozes[4];
+        }
+
         if (!audioRPC.isPlaying)
-            audioRPC.Play();
+                audioRPC.Play();
+        
+
 
     }
 }

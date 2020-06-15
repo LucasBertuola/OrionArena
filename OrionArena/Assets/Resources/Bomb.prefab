@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pv: {fileID: 0}
   force: 100
-  damage: 35
+  damage: 70
   gundir: {fileID: 0}
   timeExplode: 1.5
   timeThrow: 0.04
