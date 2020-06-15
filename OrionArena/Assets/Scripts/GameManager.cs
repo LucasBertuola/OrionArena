@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public static GameManager instance = null;
 
+    [Header("Audios")]
+
+    public AudioClip[] vozes;
+
     private void Awake()
     {
         instance = this;
@@ -172,5 +176,36 @@ public class GameManager : MonoBehaviourPunCallbacks
             , Quaternion.identity, 0);
         spawnPanel.SetActive(false);
         sceneCam.SetActive(false);
+    }
+
+    AudioSource audioRPC;
+     public void PlaySoundVoice(int value)
+    {
+        
+        if (!audioRPC)
+            audioRPC = gameObject.AddComponent<AudioSource>();
+
+        if (value == 0)
+        {
+            audioRPC.clip = vozes[Random.Range(0,1)];
+        }
+        else if(value == 1)
+        {
+            audioRPC.clip = vozes[2];
+        }
+        else if (value == 2)
+        {
+            audioRPC.clip = vozes[3];
+        }
+        else if (value == 3)
+        {
+            audioRPC.clip = vozes[4];
+        }
+
+        if (!audioRPC.isPlaying)
+                audioRPC.Play();
+        
+
+
     }
 }

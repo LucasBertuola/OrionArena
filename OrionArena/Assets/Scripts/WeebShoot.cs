@@ -29,32 +29,7 @@ public class WeebShoot : MonoBehaviour
             DestroyNet();
            // pv.RPC("DestroyNet", RpcTarget.AllBuffered);
         }
-
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, Vector2.right);
-     
-            if (hit.collider != null)
-            {
-            if (hit.collider.gameObject != gameObject)
-            {
-                PhotonView target = hit.collider.gameObject.GetComponent<PhotonView>();
-
-                if (target != null && (!target.IsMine || target.IsSceneView))
-                {
-                    if (target.tag == "Player")
-                    {
-                        target.RPC("Disable", RpcTarget.AllBuffered, true);
-                        GameObject weebP = PhotonNetwork.Instantiate("ContrictNet", target.gameObject.transform.position, Quaternion.identity);
-
-                        weebP.GetComponent<WeebParticle>().playerHit = target;
-                    }
-
-                    // pv.RPC("DestroyNet", RpcTarget.AllBuffered);
-                    DestroyNet();
-
-                }
-            }
-        }
-        
+      
     }
 
      private void OnTriggerEnter2D(Collider2D collision)

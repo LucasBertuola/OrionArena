@@ -48,6 +48,7 @@ public class Health : MonoBehaviourPun, IPunObservable
         {
             GameManager.instance.EnableRespawn();
             playerController.disableInputs = true;
+            playerController.killspread = 0;
             photonView.RPC("Die", RpcTarget.AllBuffered);
         }
     }
