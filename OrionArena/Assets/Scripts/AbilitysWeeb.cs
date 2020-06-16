@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.Rendering;
 
 public class AbilitysWeeb : Ability
 {
@@ -10,8 +11,12 @@ public class AbilitysWeeb : Ability
     public GameObject weebprefab;
     public float forceThrown;
 
+    VolumeManager volumeManager;
+
     private void Start()
     {
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
+
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
     }
@@ -45,7 +50,9 @@ public class AbilitysWeeb : Ability
             shoot.GetComponent<WeebShoot>().player = gameObject;
             AudioSource audioRPC = shoot.GetComponent<WeebShoot>().audioObj;
             audioRPC.clip = soundAbility;
-            audioRPC.Play();
+        audioRPC.volume = volumeManager.sfx;
+
+        audioRPC.Play();
         
     }
 

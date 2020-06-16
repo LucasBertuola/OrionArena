@@ -5,10 +5,20 @@ using UnityEngine;
 public class MusicScript : MonoBehaviour
 {
     public AudioClip[] clips;
+    AudioSource audio;
+    VolumeManager volumeManager;
     private void Start()
     {
-        GetComponent<AudioSource>().clip = clips[ Random.Range(0, clips.Length)];
-        GetComponent<AudioSource>().Play();
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
 
+        audio = GetComponent<AudioSource>();
+        audio.clip = clips[ Random.Range(0, clips.Length)];
+        audio.Play();
+
+    }
+    private void Update()
+    {
+       audio.volume = volumeManager.music / 2;
+        Debug.Log("Volume " + VolumeManager.volume.music); 
     }
 }

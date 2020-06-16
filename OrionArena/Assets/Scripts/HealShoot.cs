@@ -19,6 +19,7 @@ public class HealShoot : MonoBehaviour
 
     private void Start()
     {
+
         pv = GetComponent<PhotonView>();
     }
 

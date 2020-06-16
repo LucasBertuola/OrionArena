@@ -27,8 +27,12 @@ public class Shooting : MonoBehaviour
     //public float bulletForce = 20f;
     public GameObject fireparticle;
     public Transform fireMark;
+
+    VolumeManager volumeManager;
     private void Start()
     {
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
+
         pv = GetComponent<PhotonView>();
        
     }
@@ -94,6 +98,7 @@ public class Shooting : MonoBehaviour
     {
         GameObject audioAtual = Instantiate(audioObj, transform.position, Quaternion.identity);
         AudioSource audioRPC = audioAtual.GetComponent<AudioSource>();
+        audioRPC.volume = volumeManager.sfx;
         audioRPC.clip = gunSound;
         audioRPC.Play();
     }
