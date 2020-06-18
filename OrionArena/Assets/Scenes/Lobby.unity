@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2121,7 +2121,7 @@ MonoBehaviour:
   createRoomInput: {fileID: 127966061}
   joinRoomInput: {fileID: 609123916}
   connectingText: {fileID: 1260596788}
-  volumePanel: {fileID: 0}
+  volumePanel: {fileID: 1396482023}
   menu: {fileID: 1905619540}
   sfx: {fileID: 1977275491}
 --- !u!1001 &844268047
@@ -6177,7 +6177,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.64000005, y: 0.14444382}
   m_AnchorMax: {x: 0.91625005, y: 0.7555533}
-  m_AnchoredPosition: {x: 114.50003, y: 0.69692993}
+  m_AnchoredPosition: {x: 114.500015, y: 0.69692993}
   m_SizeDelta: {x: -2.100006, y: -3.5698547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2113270189
