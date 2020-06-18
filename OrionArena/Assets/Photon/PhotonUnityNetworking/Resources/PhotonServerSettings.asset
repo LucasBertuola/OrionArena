@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 08aa15e0-e29c-48c9-a006-b9c63a5c2b1f
+    AppIdRealtime: 55fc6a5b-ce9d-4a64-88ba-e9baef49c3e1
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: sa
     Server: 
     Port: 0
     Protocol: 0
@@ -55,6 +55,5 @@ MonoBehaviour:
   - UpdatePlayerList
   - WinScreen
   - YouKilled
-  - PlaySoundVoice
   DisableAutoOpenWizard: 1
   ShowSettings: 1
