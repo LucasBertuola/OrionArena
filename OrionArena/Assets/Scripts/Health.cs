@@ -79,7 +79,7 @@ public class Health : MonoBehaviourPun, IPunObservable
                 healthSlider.GetComponentInChildren<Image>().color = Color.red;
                 healthFill.color = Color.green;
                 shield = false;
-                shieldLight.enabled = false;
+                shieldLight.enabled = true;
             }            
         }
         else
@@ -160,6 +160,7 @@ public class Health : MonoBehaviourPun, IPunObservable
         healthPoints = healthMax;
         healthSlider.value = healthPoints;
         shooting.enabled = true;
+
         if (abilities != null)
         {
             abilities.enabled = true;
