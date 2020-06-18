@@ -14,15 +14,21 @@ public class ExplodeBomb : MonoBehaviour
     public GameObject shooter;
 
     float timeAt;
+
+    VolumeManager volumeManager;
     private void Start()
     {
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
+
         killerName = localPlayer.GetComponent<PlayerController>().myName;
+        GetComponent<AudioSource>().volume = volumeManager.sfx;
+
     }
 
     private void Update()
     {
         timeAt = Time.deltaTime;
-      }
+     }
     void OnEnable()
 	{
 		Invoke("Hit", 0.2f);

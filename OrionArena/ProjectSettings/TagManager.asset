@@ -11,6 +11,9 @@ TagManager:
   - Bullet
   - FxTemporaire
   - Ground
+  - Volume
+  - Musica
+  - Sfx
   layers:
   - Default
   - TransparentFX

@@ -9,8 +9,12 @@ public class AbilitysBomb : Ability
     public Transform gundir;
     public GameObject bombprefab;
     public float forceThrown;
+
+    VolumeManager volumeManager;
     private void Start()
     {
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
+
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
     }
@@ -47,6 +51,7 @@ public class AbilitysBomb : Ability
         bomb.GetComponent<Bomb>().localPlayer = this.gameObject;
         AudioSource audioRPC = bomb.GetComponent<Bomb>().audioObj;
         audioRPC.clip = soundAbility;
+        audioRPC.volume = volumeManager.sfx;
         audioRPC.Play();
     }
 }

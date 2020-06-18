@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject createUser;
     [SerializeField] private InputField userNameInput, createRoomInput, joinRoomInput;
     [SerializeField] private GameObject connectingText;
+    [SerializeField] private GameObject volumePanel;
     [SerializeField] private GameObject menu;
 
     public SfxButton sfx;
@@ -32,6 +33,20 @@ public class MenuManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
         connectingText.SetActive(true);
         menu.SetActive(false);
+    }
+
+    public void OpenVolume()
+    {
+        sfx.PlaySound(3);
+        
+        volumePanel.SetActive(true);
+    }
+
+    public void ExitVolume()
+    {
+        sfx.PlaySound(3);
+        
+        volumePanel.SetActive(false);
     }
 
     public void Exit()

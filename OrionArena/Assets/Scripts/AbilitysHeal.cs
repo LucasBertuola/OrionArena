@@ -12,8 +12,11 @@ public class AbilitysHeal : Ability
     public GameObject healprefab;
     public float forceThrown;
 
+    VolumeManager volumeManager;
     private void Start()
     {
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
+
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
     }
@@ -47,6 +50,7 @@ public class AbilitysHeal : Ability
         shoot.GetComponent<HealShoot>().player = gameObject;
         AudioSource audioRPC = shoot.GetComponent<HealShoot>().audioObj;
         audioRPC.clip = soundAbility;
+        audioRPC.volume = volumeManager.sfx;
         audioRPC.Play();
 
     }

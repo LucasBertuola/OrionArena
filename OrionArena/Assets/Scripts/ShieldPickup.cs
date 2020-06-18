@@ -11,17 +11,15 @@ public class ShieldPickup : MonoBehaviour
 
     private SpriteRenderer sr;
     private Collider2D pickupCollider;
-
+    VolumeManager volumeManager;
     private void Start()
     {
+        volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
+
         sr = GetComponent<SpriteRenderer>();
         pickupCollider = GetComponent<Collider2D>();
     }
 
-    private void Update()
-    {
-
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,6 +38,8 @@ public class ShieldPickup : MonoBehaviour
 
     void DeactivatePickup()
     {
+        GetComponent<AudioSource>().volume = volumeManager.sfx;
+
         GetComponent<AudioSource>().Play();
         sr.enabled = false;
         pickupCollider.enabled = false;

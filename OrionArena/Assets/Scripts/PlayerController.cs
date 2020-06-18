@@ -145,6 +145,9 @@ public class PlayerController : MonoBehaviour, IPunObservable
 
            
         }
+
+        GetComponent<AudioSource>().volume = VolumeManager.volume.sfx;
+
     }
     bool notSoundfuel;
     public void Refuel()
