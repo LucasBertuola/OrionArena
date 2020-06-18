@@ -19,6 +19,5 @@ public class MusicScript : MonoBehaviour
     private void Update()
     {
        audio.volume = volumeManager.music / 2;
-        Debug.Log("Volume " + VolumeManager.volume.music); 
     }
 }

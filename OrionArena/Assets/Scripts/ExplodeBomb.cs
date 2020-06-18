@@ -21,7 +21,7 @@ public class ExplodeBomb : MonoBehaviour
         volumeManager = GameObject.FindGameObjectWithTag("Volume").GetComponent<VolumeManager>();
 
         killerName = localPlayer.GetComponent<PlayerController>().myName;
-        GetComponent<AudioSource>().volume = volumeManager.sfx;
+        audioObj.volume = volumeManager.sfx;
 
     }
 
@@ -53,18 +53,21 @@ public class ExplodeBomb : MonoBehaviour
         {
             if (target.tag == "Player")
             {
-                target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
-
-                if (target.GetComponent<Health>().healthPoints <= 0 && !target.GetComponent<Health>().isDead)
+                if (target != localPlayer.GetComponent<PhotonView>())
                 {
-                    target.RPC("SetIsDead", RpcTarget.AllBuffered, true);
-                    Player gotKilled = target.Owner;
-                    target.RPC("KilledBy", gotKilled, killerName);
-                    target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
+                    target.RPC("TakeDamage", RpcTarget.AllBuffered, damage);
+               
+                    if (target.GetComponent<Health>().healthPoints <= 0 && !target.GetComponent<Health>().isDead)
+                    {
+                        target.RPC("SetIsDead", RpcTarget.AllBuffered, true);
+                        Player gotKilled = target.Owner;
+                        target.RPC("KilledBy", gotKilled, killerName);
+                        target.RPC("YouKilled", localPlayer.GetComponent<PhotonView>().Owner, target.Owner.NickName);
 
-                    GameManager.instance.PlaySoundVoice(1);
+                        GameManager.instance.PlaySoundVoice(1);
 
-                    localPlayer.GetComponent<Points>().AddPoints();
+                        localPlayer.GetComponent<Points>().AddPoints();
+                    }
                 }
             }
         }

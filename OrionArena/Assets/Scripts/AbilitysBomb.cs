@@ -17,6 +17,15 @@ public class AbilitysBomb : Ability
 
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
+
+        if (pv.IsMine)
+        {
+            progressBar.SetActive(true);
+        }
+        else
+        {
+            progressBar.SetActive(false);
+        }
     }
 
     [SerializeField] PhotonView pv;
@@ -48,7 +57,7 @@ public class AbilitysBomb : Ability
 
         bomb.GetComponent<Bomb>().force = forceThrown;
         bomb.GetComponent<Bomb>().gundir = gundir;
-        bomb.GetComponent<Bomb>().localPlayer = this.gameObject;
+        bomb.GetComponent<Bomb>().localPlayer = gameObject;
         AudioSource audioRPC = bomb.GetComponent<Bomb>().audioObj;
         audioRPC.clip = soundAbility;
         audioRPC.volume = volumeManager.sfx;

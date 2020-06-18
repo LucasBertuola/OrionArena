@@ -19,6 +19,15 @@ public class AbilitysHeal : Ability
 
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
+
+        if (pv.IsMine)
+        {
+            progressBar.SetActive(true);
+        }
+        else
+        {
+            progressBar.SetActive(false);
+        }
     }
 
     private void Update()

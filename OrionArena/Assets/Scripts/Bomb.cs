@@ -24,6 +24,7 @@ public class Bomb : MonoBehaviour
     public AudioClip soundExplode;
     private void Start()
     {
+
         pv = GetComponent<PhotonView>();
         killerName = localPlayer.GetComponent<PlayerController>().myName;
         rb = GetComponent<Rigidbody2D>();

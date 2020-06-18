@@ -19,6 +19,15 @@ public class AbilitysWeeb : Ability
 
         pv = GetComponent<PhotonView>();
         timeAt = timeForAbility;
+
+        if (pv.IsMine)
+        {
+            progressBar.SetActive(true);
+        }
+        else
+        {
+            progressBar.SetActive(false);
+        }
     }
 
     [SerializeField] PhotonView pv;

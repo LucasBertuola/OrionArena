@@ -8,4 +8,5 @@ public class Ability : MonoBehaviour
     public float timeForAbility = 5;
     public float timeAt;
     public CircularBar bar;
+    public GameObject progressBar;
 }
